@@ -57,6 +57,8 @@ export const decodeAndCleanHtml = (html: string) => {
 export const fetchPosts = async (): Promise<RawPost[]> => {
     const response = await fetch('https://www.reddit.com/user/smurfjojjo123/submitted.json');
 
+    console.log("reposne is")
+    console.log(response)
     if (!response.ok) throw new Error(`Failed to fetch data. Status: ${response.status}`);
 
     const data = await response.json() as PostCollection;
