@@ -17,10 +17,13 @@
 	<ol>
 		{#each data.posts as post (post.data.created)}
 			<li class="mb-2">
-				<h1 class="text-3xl font-semibold my-5">
+				<h1 class="text-3xl font-semibold my-3">
 					<a href={post.data.url}>🔗</a>
 					<a href={`/posts/${formatDate(post.data.created)}`}>{post.data.title}</a>
 				</h1>
+				<h2 class="text-xl mb-3" >
+					📅 {formatDate(post.data.created)}
+				</h2>
 				<p>
 					{@html truncateText(decodeAndCleanHtml(post.data.selftext_html), 50)}
 				</p>

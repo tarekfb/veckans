@@ -4,11 +4,12 @@
 </script>
 
 <svelte:head>
-	<link rel="stylesheet" href="../app.css" />
 	<title>{title}</title>
 </svelte:head>
-
-<p class="text-xl block text-end"><a href="/">Hem</a></p>
+<div class="flex justify-between mb-5">
+	<h1 class="text-4xl font-semibold ">Alla samlade positiva nyheter</h1>
+	<p class="text-2xl"><a href="/">Hem</a></p>
+</div>
 <slot />
 
 <style lang="postcss">
