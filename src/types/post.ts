@@ -1,20 +1,21 @@
-type DynamicPost = {
-    title: string;
-    content: string;
+type SmallPost = {
+  title: string;
+  content: string;
 }
-type RedditPost = {
+
+type PostCollection = {
     kind: string;
     data: {
       after: string;
       dist: number;
       modhash: string;
       geo_filter: string;
-      children: RedditPostChild[];
+      children: RawPost[];
       before: null;
     };
   };
   
-  type RedditPostChild = {
+  type RawPost = {
     kind: string;
     data: {
       approved_at_utc: null;
