@@ -1,6 +1,7 @@
 import { error } from '@sveltejs/kit';
 import { fetchPosts } from '../api';
 
+/** @type {import('./$types').PageServerLoad} */
 export const load = async () => {
 	try {
 		const posts = await fetchPosts();
