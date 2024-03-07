@@ -64,6 +64,15 @@
     "src": "src/routes/+layout.ts",
     "isEntry": true
   },
+  "src/routes/+page.server.ts": {
+    "file": "entries/pages/_page.server.ts.js",
+    "src": "src/routes/+page.server.ts",
+    "isEntry": true,
+    "imports": [
+      "_index.js",
+      "_api.js"
+    ]
+  },
   "src/routes/+page.svelte": {
     "file": "entries/pages/_page.svelte.js",
     "src": "src/routes/+page.svelte",
@@ -76,12 +85,13 @@
       "_app/immutable/assets/_page.9LfLgjpN.css"
     ]
   },
-  "src/routes/+page.ts": {
-    "file": "entries/pages/_page.ts.js",
-    "src": "src/routes/+page.ts",
+  "src/routes/posts/[slug]/+page.server.ts": {
+    "file": "entries/pages/posts/_slug_/_page.server.ts.js",
+    "src": "src/routes/posts/[slug]/+page.server.ts",
     "isEntry": true,
     "imports": [
       "_index.js",
+      "_utils.js",
       "_api.js"
     ]
   },
@@ -95,16 +105,6 @@
     ],
     "css": [
       "_app/immutable/assets/_page.1jtkkX-k.css"
-    ]
-  },
-  "src/routes/posts/[slug]/+page.ts": {
-    "file": "entries/pages/posts/_slug_/_page.ts.js",
-    "src": "src/routes/posts/[slug]/+page.ts",
-    "isEntry": true,
-    "imports": [
-      "_index.js",
-      "_utils.js",
-      "_api.js"
     ]
   }
 }

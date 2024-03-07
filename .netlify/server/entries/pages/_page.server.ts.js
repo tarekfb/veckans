@@ -1,7 +1,5 @@
 import { e as error } from "../../chunks/index.js";
 import { f as fetchPosts } from "../../chunks/api.js";
-
-/** @type {import('./$types').PageServerLoad} */
 const load = async () => {
   try {
     const posts = await fetchPosts();
