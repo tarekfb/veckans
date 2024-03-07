@@ -1,80 +1,40 @@
-import { CLIENT_ID, CLIENT_SECRET, USER_AGENT } from '$env/static/private';
+// // import { CLIENT_ID, CLIENT_SECRET, USER_AGENT } from '$env/static/private';
 
-export const fetchAccessToken = async () => {
-	// const { CLIENT_ID, CLIENT_SECRET, USER_AGENT } = process.env;
-	if (!CLIENT_ID || !CLIENT_SECRET || !USER_AGENT)
-		throw new Error('Missing one more environment variables');
+// export const fetchAccessToken = async () => {
+// 	// const { CLIENT_ID, CLIENT_SECRET, USER_AGENT } = process.env;
+// 	if (!CLIENT_ID || !CLIENT_SECRET || !USER_AGENT)
+// 		throw new Error('Missing one more environment variables');
 
-	const params = new URLSearchParams();
-	params.append('grant_type', 'client_credentials');
-	params.append('duration', 'permanent');
+// 	const params = new URLSearchParams();
+// 	params.append('grant_type', 'client_credentials');
 
-	const response = await fetch('https://www.reddit.com/api/v1/access_token', {
-		method: 'POST',
-		body: params,
-		headers: {
-			'User-Agent': USER_AGENT,
-			'Content-Type': 'application/x-www-form-urlencoded',
-			Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`, // Put password as empty
-		},
-	});
+// 	const response = await fetch('https://www.reddit.com/api/v1/access_token', {
+// 		method: 'POST',
+// 		body: params,
+// 		headers: {
+// 			'User-Agent': USER_AGENT,
+// 			'Content-Type': 'application/x-www-form-urlencoded',
+// 			Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`, // Put password as empty
+// 		},
+// 	});
 
-	if (!response.ok)
-		throw new Error(`Failed to fetch tokens. Status: ${response.status}`);
+// 	if (!response.ok)
+// 		throw new Error(`Failed to fetch data. Status: ${response.status}`);
 
-	const tokens = await response.json();
-	if (!tokens) throw new Error(`Failed to read tokens as json.`);
-
-
-
-
-	const paramsPosts = new URLSearchParams();
-	paramsPosts.append('grant_type', 'client_credentials');
-	// const accessToken = tokens.access_token;
-	// console.log(accessToken	)
-
-	// const responsePosts = await fetch(`https://oauth.reddit.com/user/smurfjojjo123/submitted`, {
-	// 	method: "GET",
-	// 	headers: { authorization: `bearer ${accessToken}` },
-	//   });
-
-	// const responsePosts = await fetch(
-	// 	'https://www.reddit.com/user/username/submitted',
-	// 	{
-	// 		method: 'POST',
-	// 		body: paramsPosts,
-	// 		headers: {
-	// 			'User-Agent': USER_AGENT,
-	// 			'Content-Type': 'application/x-www-form-urlencoded',
-	// 			Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`, // Put password as empty
-	// 		},
-	// 	},
-	// );
-	// console.log(responsePosts)
-	// if (!responsePosts.ok)
-	// 	throw new Error(`Failed to fetch posts. Status: ${response.status}`);
-
-	// const posts = await responsePosts.json();
-	// if (!posts) throw new Error(`Failed to read posts as json.`);
-	// console.log(posts);
-
-	return tokens;
-};
+// 	const tokens = await response.json();
+// 	if (!tokens) throw new Error(`Failed to read tokens as json.`);
+// 	return tokens;
+// };
 
 export const fetchPosts = async (): Promise<RawPost[]> => {
-	const tokens = await fetchAccessToken();
-	console.log(tokens);
-	// const response = await fetch(
-	// 	'https://www.reddit.com/user/smurfjojjo123/submitted.json',
-	// );
+	// const tokens = await fetchAccessToken();
+	// console.log(tokens);
+	const response = await fetch(
+		'https://www.reddit.com/user/smurfjojjo123/submitted.json',
+	);
 
-	const response = await fetch(`https://oauth.reddit.com/user/smurfjojjo123/submitted`, {
-		method: "GET",
-		headers: { authorization: `bearer ${tokens.access_token}` },
-	  });
-
-	// console.log('reposne is');
-	// console.log(response);
+	console.log('reposne is');
+	console.log(response);
 	if (!response.ok)
 		throw new Error(`Failed to fetch data. Status: ${response.status}`);
 

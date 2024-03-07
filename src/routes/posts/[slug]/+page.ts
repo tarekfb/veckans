@@ -11,7 +11,6 @@ const findPost = (posts: RawPost[], date: string): RawPost | undefined => {
 	return foundChild;
 };
 
-	/** @type {import('./$types').PageServerLoad} */
 export const load = async ({ params }: LoadEvent) => {
 	try {
 		const posts = await fetchPosts();
