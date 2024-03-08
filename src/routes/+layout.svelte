@@ -1,15 +1,20 @@
 <script lang="ts">
 	import '../app.css';
+	import MdiHome from 'virtual:icons/mdi/home';
+
 	export let title = 'Veckans goda nyheter';
 </script>
 
 <svelte:head>
 	<title>{title}</title>
 </svelte:head>
-<div class="flex justify-between mb-5">
-	<h1 class="text-4xl font-semibold ">Alla samlade positiva nyheter</h1>
-	<p class="text-2xl"><a href="/">Hem</a></p>
-</div>
+<nav class="flex justify-between mb-5">
+	<h1 class="text-4xl font-semibold">Alla samlade positiva nyheter</h1>
+	<div class="flex flex-row gap-2">
+		<a href="/" class="hover:underline"><MdiHome font-size="3em" class="bgt"/></a>
+	</div>
+</nav>
+<footer></footer>
 <slot />
 
 <style lang="postcss">
