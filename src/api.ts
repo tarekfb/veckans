@@ -1,5 +1,4 @@
 import { CLIENT_ID, CLIENT_SECRET, USER_AGENT } from '$env/static/private';
-
 export const fetchAccessToken = async () => {
 	// const { CLIENT_ID, CLIENT_SECRET, USER_AGENT } = process.env;
 	if (!CLIENT_ID || !CLIENT_SECRET || !USER_AGENT)
@@ -24,9 +23,6 @@ export const fetchAccessToken = async () => {
 
 	const tokens = await response.json();
 	if (!tokens) throw new Error(`Failed to read tokens as json.`);
-
-
-
 
 	const paramsPosts = new URLSearchParams();
 	paramsPosts.append('grant_type', 'client_credentials');
@@ -63,7 +59,6 @@ export const fetchAccessToken = async () => {
 
 export const fetchPosts = async (): Promise<RawPost[]> => {
 	const tokens = await fetchAccessToken();
-	console.log(tokens);
 	// const response = await fetch(
 	// 	'https://www.reddit.com/user/smurfjojjo123/submitted.json',
 	// );
@@ -71,7 +66,7 @@ export const fetchPosts = async (): Promise<RawPost[]> => {
 	const response = await fetch(`https://oauth.reddit.com/user/smurfjojjo123/submitted`, {
 		method: "GET",
 		headers: { authorization: `bearer ${tokens.access_token}` },
-	  });
+	});
 
 	// console.log('reposne is');
 	// console.log(response);
