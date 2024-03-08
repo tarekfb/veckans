@@ -15,24 +15,19 @@ export const load = async ({ params }: LoadEvent) => {
 	try {
 		const posts = await fetchPosts();
 		if (!params.slug) error(404, 'Missing slug');
+
 		const post = findPost(posts, params.slug);
 		if (!post) {
-			return {
-				title: 'Post not found or doesnt exist yet',
-				content: 'Either the post wasnt found or it doesnt exist yet',
-			};
+			console.log("!post");
+			error(404, "Post not found or doesnt exist yet")
+
 		}
 		if (post.data.link_flair_richtext[0].t !== 'Positiva Nyheter') {
-			return {
-				title: "Link flair rich text not matching 'Positiva Nyheter'",
-				content:
-					'Link flair rich text is ' + post.data.link_flair_richtext[0].t,
-			};
+			console.log("post.data.link_flair_richtext[0].t !== 'Positiva Nyheter");
+			error(404, "Link flair rich text not matching 'Positiva Nyheter'")
 		}
-		return {
-			title: post.data.title,
-			content: post.data.selftext_html,
-		};
+		console.log("returning post")
+		return { post };
 	} catch (e: unknown) {
 		if (e instanceof Error) {
 			console.error('Error fetching data:', e.message);

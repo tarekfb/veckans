@@ -29,7 +29,4 @@
 	:global(a:focus) {
 		outline: thin dotted;
 	}
-	:global(a:visited) {
-		color: #4a90e2;
-	}
 </style>

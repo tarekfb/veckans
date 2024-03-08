@@ -34,10 +34,13 @@ const csrDecodeHtml = (encodedHtml: string): string => {
 };
 
 export const cleanDecodedHtml = (html: string) => {
-	html = html.replace(/---------/g, '<br>');
-	html = html.replace(/_________/g, '<br>');
+	html = html.replace(/---------/g, '');
+	html = html.replace(/_________/g, '');
 	html = html.replace(/<a href="\/u\//g, '<a href="https://reddit.com/u/');
 	html = html.replace('<p>&#x200B;</p>', '');
+	html = html.replace('<br>', '');
+	html = html.replace('<p></p>', '');
+	html = html.replace('<br></br>', '');
 	return html;
 };
 
