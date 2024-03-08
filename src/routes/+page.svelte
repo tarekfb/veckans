@@ -1,52 +1,26 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import { decodeAndCleanHtml, formatDate } from '../utils';
-	import MdiHome from 'virtual:icons/mdi/home';
+	import Post from '../components/Post.svelte';
+	import { formatDate } from '../utils';
 
 	export let data: PageData;
-
-	const truncateText = (text: string, limit: number) => {
-		if (text.split(' ').length > limit) {
-			const truncatedText = text.split(' ').slice(0, limit).join(' ');
-			return `${truncatedText}...`;
-		}
-		return text;
-	};
 </script>
 
 <main>
-	<nav class="flex justify-between mb-5">
-		<h1 class="text-4xl font-semibold">Alla samlade positiva nyheter</h1>
-		<a href="/" class="flex justify-center items-center"
-			><MdiHome font-size="3em" class="hover:text-blue-800" /></a
-		>
-	</nav>
 	<ol>
-		{#each data.posts as post (post.data.created)}
-			<li class="mb-2">
-				<h1 class="text-3xl font-semibold my-3">
-					<a href={post.data.url}>🔗</a>
-					<a href={`/posts/${formatDate(post.data.created)}`}
-						>{post.data.title}</a
+		{#each data.posts as post, index (index)}
+			<li class="flex flex-col  items-start">
+				<Post post={{ post }} {index} />
+				{#if index > 0}
+					<a
+						href={`/${formatDate(post.data.created)}`}
+						class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-2xl"
 					>
-				</h1>
-				<h2 class="text-xl mb-3">
-					📅 {formatDate(post.data.created)}
-				</h2>
-				<p>
-					{@html truncateText(decodeAndCleanHtml(post.data.selftext_html), 50)}
-				</p>
-				<p>
-					<a href={`/posts/${formatDate(post.data.created)}`}>Läs mer här</a>
-				</p>
+						Read full
+					</a>
+				{/if}
+				<hr class="w-full border-t-2 my-6 border-gray-300" />
 			</li>
 		{/each}
 	</ol>
 </main>
-
-<style lang="postcs">
-	/* Using global here because if not will not properly target html inside of formattedContent object */
-	:global(ol li, ol p) {
-		margin-bottom: 1em;
-	}
-</style>
