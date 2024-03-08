@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { decodeAndCleanHtml, formatDate } from '../utils';
+	import { decodeAndCleanHtml, formatDateReadable } from '../utils';
 	import MdiKeyboardReturn from 'virtual:icons/mdi/KeyboardReturn';
-	import MdiAttachment from 'virtual:icons/mdi/attachment';
+	import MdiReddit from 'virtual:icons/mdi/reddit';
 	import PostTitle from './PostTitle.svelte';
 
 	export let post: { post: RawPost };
@@ -32,10 +32,18 @@
 {/if}
 
 <div class="flex items-center gap-2 my-2 text-xl">
-	<a href={url}><MdiAttachment /></a>
-	<h2 class="font-mono">
-		{formatDate(created)}
+	<a href={url} class="text-3xl" placeholder="Läs på reddit.com"
+		><MdiReddit /></a
+	>
+	|
+	<h2 class="font-mono text-lg">
+		{formatDateReadable(created)}
 	</h2>
+	|
+	<span>
+		Författare:
+		<a href="https://www.reddit.com/user/smurfjojjo123">@smurfjojjo123</a>
+	</span>
 </div>
 
 <div class={`post-container ${index > 0 && 'text-gradient'}`}>
@@ -48,7 +56,6 @@
 		margin-bottom: 1em;
 	}
 	/* li > :not(a) add this later */
-
 
 	.text-gradient {
 		background-clip: text;
