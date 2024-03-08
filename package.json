@@ -40,7 +40,8 @@
 		"vitest": "^1.2.0"
 	},
 	"optionalDependencies": {
-		"@rollup/rollup-linux-x64-gnu": "^4.12.1"
+		"@rollup/rollup-linux-x64-gnu": "^4.12.1",
+		"@esbuild/linux-x64": "^0.20.1"
 	},
 	"type": "module",
 	"dependencies": {
