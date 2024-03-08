@@ -9,16 +9,17 @@
 <main>
 	<ol>
 		{#each data.posts as post, index (index)}
-			<li class="mb-16 flex-col">
+			<li class="flex flex-col  items-start">
 				<Post post={{ post }} {index} />
 				{#if index > 0}
 					<a
 						href={`/${formatDate(post.data.created)}`}
-						class="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-1 px-3 border-b-4 border-r-4 border-blue-700 rounded"
+						class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-2xl"
 					>
 						Read full
 					</a>
 				{/if}
+				<hr class="w-full border-t-2 my-6 border-gray-300" />
 			</li>
 		{/each}
 	</ol>

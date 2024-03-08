@@ -44,9 +44,11 @@
 
 <style lang="postcs">
 	/* Using global here because if not will not properly target html inside of formattedContent object */
-	:global(.post-container, .post-container p) {
+	:global(.post-container li, .post-container p) {
 		margin-bottom: 1em;
 	}
+	/* li > :not(a) add this later */
+
 
 	.text-gradient {
 		background-clip: text;
