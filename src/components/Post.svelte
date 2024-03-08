@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { decodeAndCleanHtml } from '../utils';
+	import MdiKeyboardReturn from 'virtual:icons/mdi/KeyboardReturn';
 	export let post: SmallPost;
 	export let isTruncated = false;
 
@@ -15,7 +16,17 @@
 	if (isTruncated) html = truncate(html, 50);
 </script>
 
-<h1 class="text-3xl font-bold mb-5">{post.title}</h1>
+{#if isTruncated}
+	<h1 class="text-3xl font-bold mb-5">{post.title}</h1>
+{:else}
+	<div class="flex justify-center items-start gap-2">
+		<h1 class="text-3xl font-bold mb-5">{post.title}</h1>
+		<a href="/">
+			<MdiKeyboardReturn class="text-4xl text-blue-500 hover:text-blue-600" />
+		</a>
+	</div>
+{/if}
+
 <div class="post-container">
 	{@html html}
 </div>
