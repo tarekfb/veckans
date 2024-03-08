@@ -68,6 +68,7 @@ export const cleanDecodedHtml = (html: string) => {
 	html = html.replace('<br>', '');
 	html = html.replace('<p></p>', '');
 	html = html.replace('<br></br>', '');
+	html = html.replace('Vill man läsa tidigare veckors inlägg kan man göra det genom taggen under rubriken på inlägget. Som vanligt är jag inte särskilt bra på att svara på kommentarer, men jag läser och uppskattar dem verkligen. Ifall man själv stött på någon positiv nyhet under veckan får man gärna lägga den som en kommentar eller skicka iväg ett PM ifall man har ork och lust, så kan jag ta med nyheten i nästa veckas inlägg.', '');
 	return html;
 };
 
