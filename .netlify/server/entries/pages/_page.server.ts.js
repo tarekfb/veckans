@@ -6,10 +6,10 @@ const load = async () => {
     return { posts };
   } catch (e) {
     if (e instanceof Error) {
-      console.error("Error fetching data:", e.message);
+      console.error("Error fetching posts:", e.message);
       error(500, `Internal Server Error: ${e.message}`);
     } else {
-      console.error("Unknown error:", e);
+      console.error("Unknown error when fetching posts:", e);
       error(500, "Internal Server Error");
     }
   }

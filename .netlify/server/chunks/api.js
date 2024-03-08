@@ -12,7 +12,6 @@ const fetchAccessToken = async () => {
       "User-Agent": USER_AGENT,
       "Content-Type": "application/x-www-form-urlencoded",
       Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString("base64")}`
-      // Put password as empty
     }
   });
   if (!response.ok)
@@ -20,19 +19,16 @@ const fetchAccessToken = async () => {
   const tokens = await response.json();
   if (!tokens)
     throw new Error(`Failed to read tokens as json.`);
-  const paramsPosts = new URLSearchParams();
-  paramsPosts.append("grant_type", "client_credentials");
   return tokens;
 };
 const fetchPosts = async () => {
-  const tokens = await fetchAccessToken();
-  console.log(tokens);
+  const { access_token } = await fetchAccessToken();
   const response = await fetch(`https://oauth.reddit.com/user/smurfjojjo123/submitted`, {
     method: "GET",
-    headers: { authorization: `bearer ${tokens.access_token}` }
+    headers: { authorization: `bearer ${access_token}` }
   });
   if (!response.ok)
-    throw new Error(`Failed to fetch data. Status: ${response.status}`);
+    throw new Error(`Failed to fetch posts. Status: ${response.status}`);
   const data = await response.json();
   if (!data || data.data.children.length < 1)
     throw new Error("No posts found");
