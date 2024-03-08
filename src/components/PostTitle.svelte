@@ -6,5 +6,5 @@
 </script>
 
 <h1 class="flex text-3xl font-semibold">
-	<a href={`/posts/${formatDate(created)}`}>{title}</a>
+	<a href={`/${formatDate(created)}`}>{title}</a>
 </h1>

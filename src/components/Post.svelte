@@ -7,7 +7,7 @@
 	export let post: { post: RawPost };
 	const { selftext_html, url, created } = post.post.data;
 
-	export let index = 1;
+	export let index = -1;
 	const truncate = (text: string, limit: number) => {
 		if (text.split(' ').length > limit) {
 			const truncatedText = text.split(' ').slice(0, limit).join(' ');
@@ -20,7 +20,7 @@
 	if (index > 0) html = truncate(html, 50);
 </script>
 
-{#if index === 0}
+{#if index !== -1}
 	<PostTitle {post} />
 {:else}
 	<div class="flex justify-between items-start gap-3">
@@ -38,19 +38,23 @@
 	</h2>
 </div>
 
-<div class="post-container custom-gradient ">
+<div class={`post-container ${index > 0 && 'text-gradient'}`}>
 	{@html html}
 </div>
 
 <style lang="postcs">
 	/* Using global here because if not will not properly target html inside of formattedContent object */
-	:global(.post-container li, .post-container p) {
+	:global(.post-container, .post-container p) {
 		margin-bottom: 1em;
 	}
 
-	.custom-gradient {
+	.text-gradient {
 		background-clip: text;
 		color: transparent;
-		background-image: linear-gradient(to bottom, #000000, #a1a1a1); /* Adjust gradient colors as needed */
-	  }
+		background-image: linear-gradient(
+			to bottom,
+			#000000,
+			#a1a1a1
+		); /* Adjust gradient colors as needed */
+	}
 </style>

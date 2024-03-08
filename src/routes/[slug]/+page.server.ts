@@ -1,6 +1,6 @@
 import { error, type LoadEvent } from '@sveltejs/kit';
-import { formatDate } from '../../../utils';
-import { fetchPosts } from '../../../api';
+import { formatDate } from '../../utils';
+import { fetchPosts } from '../../api';
 
 const findPost = (posts: RawPost[], date: string): RawPost | undefined => {
 	const foundChild = posts.find((child) => {
