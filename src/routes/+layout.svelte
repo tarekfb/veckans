@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../app.css';
 
-	export const title = 'Veckans positiva nyheter';
+	const title = 'Veckans positiva nyheter';
 </script>
 
 <svelte:head>

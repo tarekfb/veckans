@@ -7,7 +7,7 @@
 	export let post: { post: RawPost };
 	const { selftext_html, url, created } = post.post.data;
 
-	export const index = -1;
+	export let index = -1;
 	const truncate = (text: string, limit: number) => {
 		if (text.split(' ').length > limit) {
 			const truncatedText = text.split(' ').slice(0, limit).join(' ');
