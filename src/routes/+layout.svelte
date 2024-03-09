@@ -13,7 +13,7 @@
 <style lang="postcss">
 	:global(html) {
 		background-color: theme(colors.gray.100);
-		padding: 2em;
+		padding: 1em;
 	}
 	/* Using global here because if not will not properly target html inside of formattedContent object */
 	:global(a) {

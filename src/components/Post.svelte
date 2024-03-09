@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { decodeAndCleanHtml, formatDateReadable } from '../utils';
-	import MdiKeyboardReturn from 'virtual:icons/mdi/KeyboardReturn';
+	import { processHtml, formatDateReadable } from '../utils';
+	import MdiKeyboardBackspace from 'virtual:icons/mdi/KeyboardBackspace';
 	import MdiReddit from 'virtual:icons/mdi/reddit';
 	import PostTitle from './PostTitle.svelte';
 
@@ -16,46 +16,51 @@
 		return text;
 	};
 
-	let html = decodeAndCleanHtml(selftext_html);
+	let html = processHtml(selftext_html);
 	if (index > 0) html = truncate(html, 50);
 </script>
 
-{#if index !== -1}
-	<PostTitle {post} />
-{:else}
-	<div class="flex justify-between items-start gap-3">
+<div
+	class={`${index === -1 && 'sticky space-x-1 border-b-2 border-gray-800'} flex justify-between items-center z-1 w-full bg-gray-100 top-0 left-0 pb-2 mb-2`}
+>
+	<div class="flex flex-col gap-y-1">
 		<PostTitle {post} />
-		<a href="/">
-			<MdiKeyboardReturn class="text-4xl text-blue-500 hover:text-blue-600" />
-		</a>
-	</div>
-{/if}
 
-<div class="flex items-center gap-2 my-2 text-xl">
-	<a href={url} class="text-3xl" placeholder="Läs på reddit.com"
-		><MdiReddit /></a
-	>
-	|
-	<h2 class="font-mono text-lg">
-		{formatDateReadable(created)}
-	</h2>
-	|
-	<span>
-		Författare:
-		<a href="https://www.reddit.com/user/smurfjojjo123">@smurfjojjo123</a>
-	</span>
+		<div class="flex items-center gap-2 text-sm">
+			<a href={url} class="text-2xl" placeholder="Läs på reddit.com"
+				><MdiReddit /></a
+			>
+			|
+			<h2 class="font-mono whitespace-nowrap">
+				{formatDateReadable(created)}
+			</h2>
+			|
+			<span>
+				Författare:
+				<a href="https://www.reddit.com/user/smurfjojjo123">@smurfjojjo123</a>
+			</span>
+		</div>
+	</div>
+	{#if index === -1}
+		<a
+			href="/"
+			class="p-1 text-white bg-blue-500 hover:bg-blue-600 rounded-2xl"
+		>
+			<MdiKeyboardBackspace class="text-2xl " />
+		</a>
+	{/if}
 </div>
+
 
 <div class={`post-container ${index > 0 && 'text-gradient'}`}>
 	{@html html}
 </div>
 
 <style lang="postcs">
-	/* Using global here because if not will not properly target html inside of formattedContent object */
-	:global(.post-container li, .post-container p) {
+	/* global because if not will not properly target html inside of html object */
+	:global(.post-container p) {
 		margin-bottom: 1em;
 	}
-	/* li > :not(a) add this later */
 
 	.text-gradient {
 		background-clip: text;

@@ -18,15 +18,12 @@ export const load = async ({ params }: LoadEvent) => {
 
 		const post = findPost(posts, params.slug);
 		if (!post) {
-			console.log("!post");
 			error(404, "Post not found or doesnt exist yet")
 
 		}
 		if (post.data.link_flair_richtext[0].t !== 'Positiva Nyheter') {
-			console.log("post.data.link_flair_richtext[0].t !== 'Positiva Nyheter");
 			error(404, "Link flair rich text not matching 'Positiva Nyheter'")
 		}
-		console.log("returning post")
 		return { post };
 	} catch (e: unknown) {
 		if (e instanceof Error) {
