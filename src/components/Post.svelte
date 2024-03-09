@@ -21,36 +21,40 @@
 </script>
 
 <div
-	class={`${index === -1 && 'sticky space-x-1 border-b-2 border-gray-800'} flex justify-between items-center z-1 w-full bg-gray-100 top-0 left-0 pb-2 mb-2`}
+	class={`${index === -1 && 'sticky'} flex flex-col gap-y-1 justify-center items-stretch w-full bg-gray-100 top-0 left-0 pb-2 pt-1`}
 >
-	<div class="flex flex-col gap-y-1">
-		<PostTitle {post} />
-
-		<div class="flex items-center gap-2 text-sm">
-			<a href={url} class="text-2xl" placeholder="Läs på reddit.com"
-				><MdiReddit /></a
-			>
-			|
-			<h2 class="font-mono whitespace-nowrap">
-				{formatDateReadable(created)}
-			</h2>
-			|
-			<span>
-				Författare:
-				<a href="https://www.reddit.com/user/smurfjojjo123">@smurfjojjo123</a>
-			</span>
-		</div>
-	</div>
 	{#if index === -1}
-		<a
-			href="/"
-			class="p-1 text-white bg-blue-500 hover:bg-blue-600 rounded-2xl"
-		>
-			<MdiKeyboardBackspace class="text-2xl " />
-		</a>
+		<div class="flex justify-between items-center gap-2">
+			<PostTitle {post} />
+			<a
+				href="/"
+				class="p-1 text-white bg-blue-500 hover:bg-blue-600 rounded-2xl"
+			>
+				<MdiKeyboardBackspace class="text-xl " />
+			</a>
+		</div>
+	{:else}
+		<PostTitle {post} />
 	{/if}
-</div>
 
+	<div class="flex items-center gap-2 text-sm">
+		<a href={url} class="text-2xl" placeholder="Läs på reddit.com"
+			><MdiReddit /></a
+		>
+		|
+		<h2 class="font-mono whitespace-nowrap">
+			{formatDateReadable(created)}
+		</h2>
+		|
+		<span>
+			Författare:
+			<a href="https://www.reddit.com/user/smurfjojjo123">@smurfjojjo123</a>
+		</span>
+	</div>
+
+	<hr class="w-full border-t-2 my-2 border-gray-300" />
+
+</div>
 
 <div class={`post-container ${index > 0 && 'text-gradient'}`}>
 	{@html html}
@@ -58,8 +62,12 @@
 
 <style lang="postcs">
 	/* global because if not will not properly target html inside of html object */
-	:global(.post-container p) {
+	:global(.post-container p, .post-container li) {
 		margin-bottom: 1em;
+	}
+
+	:global(.post-container) {
+		overflow: hidden;
 	}
 
 	.text-gradient {
