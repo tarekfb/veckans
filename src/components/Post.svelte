@@ -1,8 +1,5 @@
 <script lang="ts">
-	import {
-		processHtml,
-		formatDateReadable,
-	} from '../utils';
+	import { processHtml, formatDateReadable } from '../utils';
 	import MdiKeyboardBackspace from 'virtual:icons/mdi/KeyboardBackspace';
 	import MdiReddit from 'virtual:icons/mdi/reddit';
 	import PostTitle from './PostTitle.svelte';
@@ -23,33 +20,34 @@
 	if (index > 0) html = truncate(html, 50);
 </script>
 
-{#if index !== -1}
-	<PostTitle {post} />
-{:else}
-	<div class="flex justify-between items-start gap-3">
-		<PostTitle {post} />
-		<a
-			href="/"
-			class="fixed p-1 items-center text-white top-28 right-5 bg-blue-500 hover:bg-blue-600 rounded-2xl"
-		>
-			<MdiKeyboardBackspace class="text-3xl " />
-		</a>
-	</div>
-{/if}
+<div class="fixed flex justify-between items-center z-1 w-full bg-gray-200 top-0 left-0 pt-2 pb-1 px-2">
+	<div class="flex flex-col gap-y-1">
+		{#if index !== -1}
+			<PostTitle {post} />
+		{:else}
+			<div class="flex justify-between items-start gap-3">
+				<PostTitle {post} />
+			</div>
+		{/if}
 
-<div class="flex items-center gap-2 my-2 text-sm">
-	<a href={url} class="text-2xl" placeholder="Läs på reddit.com"
-		><MdiReddit /></a
-	>
-	|
-	<h2 class="font-mono whitespace-nowrap">
-		{formatDateReadable(created)}
-	</h2>
-	|
-	<span>
-		Författare:
-		<a href="https://www.reddit.com/user/smurfjojjo123">@smurfjojjo123</a>
-	</span>
+		<div class="flex items-center gap-2 text-sm">
+			<a href={url} class="text-2xl" placeholder="Läs på reddit.com"
+				><MdiReddit /></a
+			>
+			|
+			<h2 class="font-mono whitespace-nowrap">
+				{formatDateReadable(created)}
+			</h2>
+			|
+			<span>
+				Författare:
+				<a href="https://www.reddit.com/user/smurfjojjo123">@smurfjojjo123</a>
+			</span>
+		</div>
+	</div>
+	<a href="/" class="p-1 text-white bg-blue-500 hover:bg-blue-600 rounded-2xl">
+		<MdiKeyboardBackspace class="text-3xl " />
+	</a>
 </div>
 
 <div class={`post-container ${index > 0 && 'text-gradient'}`}>
