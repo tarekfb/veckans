@@ -9,7 +9,7 @@
 <main>
 	<ol>
 		{#each data.posts as post, index (index)}
-			<li class="flex flex-col  items-start">
+			<li class="flex flex-col items-start">
 				<Post post={{ post }} {index} />
 				{#if index > 0}
 					<a

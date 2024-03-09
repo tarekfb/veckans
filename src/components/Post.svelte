@@ -20,15 +20,11 @@
 	if (index > 0) html = truncate(html, 50);
 </script>
 
-<div class="fixed flex justify-between items-center z-1 w-full bg-gray-200 top-0 left-0 pt-2 pb-1 px-2">
+<div
+	class={`${index === -1 && 'sticky space-x-1 border-b-2 border-gray-800'} flex justify-between items-center z-1 w-full bg-gray-100 top-0 left-0 pb-2 mb-2`}
+>
 	<div class="flex flex-col gap-y-1">
-		{#if index !== -1}
-			<PostTitle {post} />
-		{:else}
-			<div class="flex justify-between items-start gap-3">
-				<PostTitle {post} />
-			</div>
-		{/if}
+		<PostTitle {post} />
 
 		<div class="flex items-center gap-2 text-sm">
 			<a href={url} class="text-2xl" placeholder="Läs på reddit.com"
@@ -45,10 +41,16 @@
 			</span>
 		</div>
 	</div>
-	<a href="/" class="p-1 text-white bg-blue-500 hover:bg-blue-600 rounded-2xl">
-		<MdiKeyboardBackspace class="text-3xl " />
-	</a>
+	{#if index === -1}
+		<a
+			href="/"
+			class="p-1 text-white bg-blue-500 hover:bg-blue-600 rounded-2xl"
+		>
+			<MdiKeyboardBackspace class="text-2xl " />
+		</a>
+	{/if}
 </div>
+
 
 <div class={`post-container ${index > 0 && 'text-gradient'}`}>
 	{@html html}
