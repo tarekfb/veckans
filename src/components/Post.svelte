@@ -1,6 +1,9 @@
 <script lang="ts">
-	import { decodeAndCleanHtml, formatDateReadable } from '../utils';
-	import MdiKeyboardReturn from 'virtual:icons/mdi/KeyboardReturn';
+	import {
+		processHtml,
+		formatDateReadable,
+	} from '../utils';
+	import MdiKeyboardBackspace from 'virtual:icons/mdi/KeyboardBackspace';
 	import MdiReddit from 'virtual:icons/mdi/reddit';
 	import PostTitle from './PostTitle.svelte';
 
@@ -16,7 +19,7 @@
 		return text;
 	};
 
-	let html = decodeAndCleanHtml(selftext_html);
+	let html = processHtml(selftext_html);
 	if (index > 0) html = truncate(html, 50);
 </script>
 
@@ -25,18 +28,21 @@
 {:else}
 	<div class="flex justify-between items-start gap-3">
 		<PostTitle {post} />
-		<a href="/">
-			<MdiKeyboardReturn class="text-4xl text-blue-500 hover:text-blue-600" />
+		<a
+			href="/"
+			class="fixed p-1 items-center text-white top-28 right-5 bg-blue-500 hover:bg-blue-600 rounded-2xl"
+		>
+			<MdiKeyboardBackspace class="text-3xl " />
 		</a>
 	</div>
 {/if}
 
-<div class="flex items-center gap-2 my-2 text-xl">
-	<a href={url} class="text-3xl" placeholder="Läs på reddit.com"
+<div class="flex items-center gap-2 my-2 text-sm">
+	<a href={url} class="text-2xl" placeholder="Läs på reddit.com"
 		><MdiReddit /></a
 	>
 	|
-	<h2 class="font-mono text-lg">
+	<h2 class="font-mono whitespace-nowrap">
 		{formatDateReadable(created)}
 	</h2>
 	|
@@ -51,11 +57,10 @@
 </div>
 
 <style lang="postcs">
-	/* Using global here because if not will not properly target html inside of formattedContent object */
-	:global(.post-container li, .post-container p) {
+	/* global because if not will not properly target html inside of html object */
+	:global(.post-container p) {
 		margin-bottom: 1em;
 	}
-	/* li > :not(a) add this later */
 
 	.text-gradient {
 		background-clip: text;
