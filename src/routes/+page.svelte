@@ -9,7 +9,7 @@
 <main class="p-4 bg-bgBlue">
 	<ol>
 		{#each data.posts as post, index (index)}
-			<li class="flex flex-col items-start p-1 bg-bgBright mb-4">
+			<li class="flex flex-col items-start p-3 bg-bgBright mb-4 rounded-lg shadow-lg">
 				<Post post={{ post }} {index} />
 				{#if index > 0}
 					<a

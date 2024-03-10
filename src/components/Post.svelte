@@ -53,7 +53,6 @@
 	</div>
 
 	<hr class="w-full border-t-2 my-2 border-gray-300" />
-
 </div>
 
 <div class={`post-container ${index > 0 && 'text-gradient'}`}>
