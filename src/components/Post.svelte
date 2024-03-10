@@ -38,7 +38,7 @@
 	{/if}
 
 	<div class="flex items-center gap-2 text-sm">
-		<a href={url} class="text-2xl" placeholder="Läs på reddit.com"
+		<a href={url} class="text-2xl text-red-600" placeholder="Läs på reddit.com"
 			><MdiReddit /></a
 		>
 		|
@@ -47,7 +47,7 @@
 		</h2>
 		|
 		<span>
-			Författare:
+			Text:
 			<a href="https://www.reddit.com/user/smurfjojjo123">@smurfjojjo123</a>
 		</span>
 	</div>
