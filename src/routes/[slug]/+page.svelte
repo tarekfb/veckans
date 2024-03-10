@@ -4,4 +4,6 @@
 	export let data;
 </script>
 
-<Post post={data} />
+<main class="py-2 px-4">
+	<Post post={data} />
+</main>

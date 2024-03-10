@@ -12,15 +12,14 @@
 
 <style lang="postcss">
 	:global(html) {
-		background-color: theme(colors.gray.100);
-		padding: 1em;
+		background-color: theme(colors.bgBright);
 	}
 	/* Using global here because if not will not properly target html inside of formattedContent object */
 	:global(a) {
-		color: #007bff;
+		color: theme(colors.focus);
 	}
 	:global(a:hover) {
-		color: #0051a8; /* Darker blue for hover */
+		color: theme(colors.focusDark);
 		text-decoration: underline;
 	}
 	:global(a:active) {
