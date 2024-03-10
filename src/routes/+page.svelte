@@ -6,10 +6,10 @@
 	export let data: PageData;
 </script>
 
-<main>
+<main class="p-4 bg-bgBlue">
 	<ol>
 		{#each data.posts as post, index (index)}
-			<li class="flex flex-col items-start">
+			<li class="flex flex-col items-start p-1 bg-bgBright mb-4">
 				<Post post={{ post }} {index} />
 				{#if index > 0}
 					<a

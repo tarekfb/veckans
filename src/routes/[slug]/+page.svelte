@@ -4,4 +4,6 @@
 	export let data;
 </script>
 
-<Post post={data} />
+<main class="p-2">
+	<Post post={data} />
+</main>
