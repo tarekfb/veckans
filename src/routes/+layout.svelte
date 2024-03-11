@@ -6,6 +6,12 @@
 
 <svelte:head>
 	<title>{title}</title>
+	<meta charset="UTF-8" />
+	<meta
+		name="description"
+		content="Alla gamla och kommande av veckans positiva nyheter."
+	/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
 <footer></footer>
 <slot />
