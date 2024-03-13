@@ -16,5 +16,8 @@ export default {
         successGreen: '#00cc66'
       },
     },
-  }
+  },
+  plugins: [
+    require('daisyui')
+  ]
 };
