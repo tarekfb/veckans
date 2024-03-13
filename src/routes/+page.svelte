@@ -7,7 +7,7 @@
 	export let data: PageData;
 </script>
 
-<main class="p-4 bg-bgBlue">
+<main class="p-4 bg- ">
 	<ol>
 		{#each data.posts as post, index (index)}
 			<li

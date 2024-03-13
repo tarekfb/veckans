@@ -19,5 +19,19 @@ export default {
   },
   plugins: [
     require('daisyui')
-  ]
+  ],
+  daisyui: {
+    themes: [
+      {
+        light: {
+          ...require("daisyui/src/theming/themes")["light"],
+          primary: "007BFF",
+          secondary: "teal",
+          "base-100": "#f3f4f6",
+          "alt-100": "#d7e1f5",
+        },
+      },
+      "dark"
+    ],
+  },
 };
