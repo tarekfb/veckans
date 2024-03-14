@@ -24,14 +24,11 @@
 	class={`${index === -1 && 'sticky'} flex flex-col gap-y-1 justify-center items-stretch w-full top-0 left-0 pb-2 pt-1 bg-base-100`}
 >
 	{#if index === -1}
-		<div class="flex justify-between items-center gap-2">
+		<div class="flex justify-between items-center gap-2 pt-2">
 			<PostTitle {post} />
-			<button
-				class="btn btn-primary rounded-full text-white"
-				on:click={() => (window.location.href = '/')}
-			>
+			<a href={`/`} class="bg-primary rounded-full p-2 text-base-100">
 				<MdiKeyboardBackspace class="text-lg " />
-			</button>
+			</a>
 		</div>
 	{:else}
 		<PostTitle {post} {index} />
@@ -64,23 +61,55 @@
 	{@html html}
 </div>
 
-<style lang="postcs">
+<style>
 	/* global because if not will not properly target html inside of html object */
-	:global(.post-container p, .post-container li) {
+	/* :global(.post-container p, .post-container li) {
 		margin-bottom: 1em;
-	}
+	} */
 
 	:global(.post-container) {
 		overflow: hidden;
 	}
+
+	:global(.post-container .paragraph) {
+		margin-bottom: 1em;
+	}
+
+	/* this is copy pasted from: .link and .link-primary */
+	:global(.post-container .source) {
+		cursor: pointer;
+		text-decoration-line: underline;
+		--tw-text-opacity: 1;
+		color: var(--fallback-p, oklch(var(--p) / var(--tw-text-opacity)));
+	}
+	:global(.post-container .source:focus) {
+		outline: 2px solid transparent;
+		outline-offset: 2px;
+	}
+	:global(.post-container .source:focus-visible) {
+		outline: 2px solid currentColor;
+		outline-offset: 2px;
+	}
+	@supports (color: color-mix(in oklab, black, black)) {
+		@media (hover: hover) {
+			:global(.post-container .source:hover) {
+				color: color-mix(
+					in oklab,
+					var(--fallback-p, oklch(var(--p) / 1)) 80%,
+					black
+				);
+			}
+		}
+	}
+	/* end of copy paste */
 
 	.text-gradient {
 		background-clip: text;
 		color: transparent;
 		background-image: linear-gradient(
 			to bottom,
-			#000000,
-			#a1a1a1
-		); /* Adjust gradient colors as needed */
+			theme('colors.base-content'),
+			theme('colors.base-100')
+		);
 	}
 </style>

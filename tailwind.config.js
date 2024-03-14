@@ -4,17 +4,7 @@ export default {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
     extend: {
-      colors: {
-        bgBright: '#f3f4f6',
-        bgDark: '#1a1a1a',
-        bgBlue: '#d7e1f5',
-        accentGreen: '#00cc66',
-        textBright: '#333',
-        textDark: '#fff',
-        focus: "#007BFF",
-        focusDark: "#0051a8",
-        successGreen: '#00cc66'
-      },
+     
     },
   },
   plugins: [
@@ -28,10 +18,19 @@ export default {
           primary: "007BFF",
           secondary: "teal",
           "base-100": "#f3f4f6",
-          "alt-100": "#d7e1f5",
+          "base-200": "#d7e1f5",
+          "test": "#d7e1f5",
+          '--title': 'white'
+
+        },
+        dark: {
+          ...require("daisyui/src/theming/themes")["dark"],
+          "base-200": "#011c27",
+          '--title': 'black'
+
         },
       },
-      "dark"
+
     ],
   },
 };
