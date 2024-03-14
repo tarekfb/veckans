@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '../app.css';
-
+	import MoonIcon from '../components/MoonIcon.svelte';
+	import SunIcon from '../components/SunIcon.svelte';
 	const title = 'Veckans positiva nyheter';
 </script>
 
@@ -13,25 +14,10 @@
 	/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
-<footer></footer>
 <slot />
 
-<style lang="postcss">
-	:global(html) {
-		background-color: theme(colors.bgBright);
-	}
-	/* Using global here because if not will not properly target html inside of formattedContent object */
-	:global(a) {
-		color: theme(colors.focus);
-	}
-	:global(a:hover) {
-		color: theme(colors.focusDark);
-		text-decoration: underline;
-	}
-	:global(a:active) {
-		text-decoration: underline;
-	}
-	:global(a:focus) {
-		outline: thin dotted;
-	}
-</style>
+<label class="swap swap-rotate fixed bottom-5 right-5">
+	<input type="checkbox" class="theme-controller" value="light" />
+	<SunIcon />
+	<MoonIcon />
+</label>

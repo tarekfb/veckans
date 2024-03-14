@@ -16,25 +16,31 @@ export const formatDateReadable = (dateFromPost: number) => {
 	return formattedDate;
 };
 
-export const addClasses = (html: string) => {
-	console.log(html);
-	const kallorIndex = html.indexOf('Källor');
-	if (kallorIndex > -1) return html;
+const processTextContent = (html: string) => {
 
-	let contentBeforeKallor = html.substring(0, kallorIndex);
-	console.log('length is', html.length);
+	const kallorIndex = html.toLowerCase().indexOf('källor');
+	if (kallorIndex === -1) return html;
 
-	const tempIndex = contentBeforeKallor.indexOf('<p>');
-	console.log('tempisindex', tempIndex);
+	let content = html.substring(0, kallorIndex);
 
-	contentBeforeKallor = contentBeforeKallor
-		.replaceAll('<ul>', '')
-		.replaceAll('</ul>', '')
+	content = content
 		.replaceAll('<p>', '<p class="paragraph">')
 		.replaceAll('<li>', '<li class="paragraph">');
 
-	html = contentBeforeKallor + html.substring(kallorIndex);
-	console.log('length is after', html.length);
+	html = content + html.substring(kallorIndex);
+	return html;
+};
+
+const processSources = (html: string) => {
+	const kallorIndex = html.toLowerCase().indexOf('källor');
+	if (kallorIndex === -1) return html;
+
+	let content = html.substring(kallorIndex);
+
+	content = content.replaceAll('<a', '<a class="source"')
+	// .replaceAll('<li>', '<li class="paragraph">');
+
+	html = html.substring(0, kallorIndex) + content;
 	return html;
 };
 
@@ -91,6 +97,8 @@ export const cleanDecodedHtml = (html: string) => {
 		.replace('<br>', '')
 		.replace('<p></p>', '')
 		.replace('<p> </p>', '')
+		.replace(/<p>\s*<\/p>/gi, '')
+		.replace('<p>&ZeroWidthSpace;</p>', '')
 		.replace('<br></br>', '')
 		.replace(
 			'Vill man läsa tidigare veckors inlägg kan man göra det genom taggen under rubriken på inlägget. Som vanligt är jag inte särskilt bra på att svara på kommentarer, men jag läser och uppskattar dem verkligen. Ifall man själv stött på någon positiv nyhet under veckan får man gärna lägga den som en kommentar eller skicka iväg ett PM ifall man har ork och lust, så kan jag ta med nyheten i nästa veckas inlägg.',
@@ -109,6 +117,7 @@ export const decodeHtmlEntities = (html: string): string => {
 export const processHtml = (rawHtml: string) => {
 	let html = decodeHtmlEntities(rawHtml);
 	html = cleanDecodedHtml(html);
-	html = addClasses(html);
+	html = processTextContent(html);
+	html = processSources(html);
 	return html;
 };

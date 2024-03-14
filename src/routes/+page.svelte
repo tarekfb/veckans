@@ -2,31 +2,30 @@
 	import type { PageData } from './$types';
 	import Post from '../components/Post.svelte';
 	import { formatDate } from '../utils';
-	import { goto } from '$app/navigation';
 
 	export let data: PageData;
 </script>
 
-<main class="p-4 bg-bgBlue">
+<main class="p-4 bg-base-200">
 	<ol>
 		{#each data.posts as post, index (index)}
 			<li
-				class="flex flex-col items-start p-3 bg-bgBright mb-4 rounded-lg shadow-lg"
+				class="flex flex-col items-start p-3 bg-base-100 mb-4 rounded-lg shadow-lg"
 			>
-				<button
-					class="text-start"
-					on:click={() => goto('/' + formatDate(post.data.created))}
+				<a
+					class="text-start cursor-pointer"
+					href={'/' + formatDate(post.data.created)}
 				>
 					<Post post={{ post }} {index} />
 					{#if index > 0}
 						<a
 							href={`/${formatDate(post.data.created)}`}
-							class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded-2xl mb-4"
+							class="btn btn-primary"
 						>
 							Läs hela
 						</a>
 					{/if}
-				</button>
+				</a>
 			</li>
 		{/each}
 	</ol>

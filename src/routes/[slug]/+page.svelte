@@ -4,6 +4,7 @@
 	export let data;
 </script>
 
-<main class="py-2 px-4">
+<!-- pb-2 because top element in post has own padding to not mess with fixed position -->
+<main class="pb-2 px-4">
 	<Post post={data} />
 </main>
