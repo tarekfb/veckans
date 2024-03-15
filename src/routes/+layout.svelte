@@ -2,11 +2,27 @@
 	import '../app.css';
 	import MoonIcon from '../components/MoonIcon.svelte';
 	import SunIcon from '../components/SunIcon.svelte';
-	const title = 'Veckans positiva nyheter';
+
+	// 	OPTION 2
+	import { onMount } from 'svelte';
+	// afterUpdate(() => {
+	// 	// secondary CSS variable gives you HSL values
+	// 	console.log(
+	// 		getComputedStyle(document.querySelector(':root')).getPropertyValue('--s'),
+	// 	);
+	// });
+
+	let invertedPreferral = '';
+	onMount(() => {
+		invertedPreferral = window?.matchMedia?.('(prefers-color-scheme:dark)')
+			?.matches
+			? 'light'
+			: 'dark';
+	});
 </script>
 
 <svelte:head>
-	<title>{title}</title>
+	<title>Veckans positiva nyheter</title>
 	<meta charset="UTF-8" />
 	<meta
 		name="description"
@@ -17,7 +33,7 @@
 <slot />
 
 <label class="swap swap-rotate fixed bottom-5 right-5">
-	<input type="checkbox" class="theme-controller" value="light" />
+	<input type="checkbox" class="theme-controller" value={invertedPreferral} />
 	<SunIcon />
 	<MoonIcon />
 </label>
