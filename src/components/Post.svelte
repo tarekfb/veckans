@@ -3,9 +3,11 @@
 	import MdiKeyboardBackspace from 'virtual:icons/mdi/KeyboardBackspace';
 	import MdiReddit from 'virtual:icons/mdi/reddit';
 	import PostTitle from './PostTitle.svelte';
+	import Comments from './Comments.svelte';
 
-	export let post: { post: RawPost };
-	const { selftext_html, url, created } = post.post.data;
+	export let comments: PostComment[] = [];
+	export let post: RawPost;
+	const { selftext_html, url, created } = post.data;
 
 	export let index = -1; // -1 is from dynamic route. 0 is first post on landing page. > 0 is all other posts on landig page.
 	const truncate = (text: string, limit: number) => {
@@ -60,6 +62,10 @@
 <div class={`post-container ${index > 0 && 'text-gradient'}`}>
 	{@html html}
 </div>
+
+<div class="divider my-2" />
+
+<Comments {comments} />
 
 <style>
 	/* global because if not will not properly target html inside of html object */

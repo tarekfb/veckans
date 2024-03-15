@@ -2,15 +2,7 @@
 	import '../app.css';
 	import MoonIcon from '../components/MoonIcon.svelte';
 	import SunIcon from '../components/SunIcon.svelte';
-
-	// 	OPTION 2
 	import { onMount } from 'svelte';
-	// afterUpdate(() => {
-	// 	// secondary CSS variable gives you HSL values
-	// 	console.log(
-	// 		getComputedStyle(document.querySelector(':root')).getPropertyValue('--s'),
-	// 	);
-	// });
 
 	let invertedPreferral = '';
 	onMount(() => {

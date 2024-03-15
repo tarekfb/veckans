@@ -1,6 +1,6 @@
 import { error, type LoadEvent } from '@sveltejs/kit';
 import { formatDate } from '../../utils';
-import { fetchPosts } from '../../api';
+import { fetchComments, fetchPosts } from '../../api';
 
 const findPost = (posts: RawPost[], date: string): RawPost | undefined => {
 	const foundChild = posts.find((child) => {
@@ -24,7 +24,9 @@ export const load = async ({ params }: LoadEvent) => {
 		if (post.data.link_flair_richtext[0].t !== 'Positiva Nyheter') {
 			error(404, "Link flair rich text not matching 'Positiva Nyheter'")
 		}
-		return { post };
+
+		const comments: PostComment[] = await fetchComments(post.data.subreddit, post.data.id);
+		return { post, comments };
 	} catch (e: unknown) {
 		if (e instanceof Error) {
 			console.error('Error fetching data:', e.message);
