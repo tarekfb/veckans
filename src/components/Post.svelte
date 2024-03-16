@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { processHtml, formatDateReadable } from '../utils';
+	import { processHtml, formatDateReadable, PostType } from '../utils';
 	import MdiKeyboardBackspace from 'virtual:icons/mdi/KeyboardBackspace';
 	import MdiReddit from 'virtual:icons/mdi/reddit';
 	import PostTitle from './PostTitle.svelte';
@@ -9,7 +9,7 @@
 	export let post: RawPost;
 	const { selftext_html, url, created } = post.data;
 
-	export let index = -1; // -1 is from dynamic route. 0 is first post on landing page. > 0 is all other posts on landig page.
+	export let postType: PostType = PostType.Default; // -1 is from dynamic route. 0 is first post on landing page. > 0 is all other posts on landig page.
 	const truncate = (text: string, limit: number) => {
 		if (text.split(' ').length > limit) {
 			const truncatedText = text.split(' ').slice(0, limit).join(' ');
@@ -19,13 +19,13 @@
 	};
 
 	let html = processHtml(selftext_html);
-	if (index > 0) html = truncate(html, 50);
+	if (postType === PostType.OutOfFocus) html = truncate(html, 50);
 </script>
 
 <div
-	class={`${index === -1 && 'sticky z-10'} flex flex-col gap-y-1 justify-center items-stretch w-full top-0 left-0 pb-2 pt-1 bg-base-100`}
+	class={`${postType === PostType.Default && 'sticky z-10'} flex flex-col gap-y-1 justify-center items-stretch w-full top-0 left-0 pb-2 pt-1 bg-base-100`}
 >
-	{#if index === -1}
+	{#if postType === -1}
 		<div class="flex justify-between items-center gap-2 pt-2">
 			<PostTitle {post} />
 			<a href={`/`} class="bg-primary rounded-full p-2 text-base-100">
@@ -33,7 +33,7 @@
 			</a>
 		</div>
 	{:else}
-		<PostTitle {post} {index} />
+		<PostTitle {post} postType={postType} />
 	{/if}
 
 	<div class="flex items-center gap-2 text-sm">
@@ -59,16 +59,16 @@
 	<div class="divider my-2" />
 </div>
 
-<div class={`post-container ${index > 0 && 'text-gradient'}`}>
+<div class={`post-container ${postType === PostType.OutOfFocus && 'text-gradient'}`}>
 	{@html html}
 </div>
 
-<div class="divider my-2" />
-
-<section class="bg-base-200 -mx-4 pt-4 px-2 overflow-hidden">
-
-	<Comments {comments} />
-</section>
+{#if postType === PostType.Default}
+	<div class="divider my-2" />
+	<section class="overflow-hidden">
+		<Comments {comments} />
+	</section>
+{/if}
 
 <style>
 	/* global because if not will not properly target html inside of html object */

@@ -29,6 +29,11 @@ type Replies = {
 	};
 }
 
+type RecursiveComment = {
+	comment: PostComment;
+	level: number;
+};
+
 type PostComment = {
 	kind: string;
 	data: CommentData;

@@ -121,3 +121,9 @@ export const processHtml = (rawHtml: string) => {
 	html = processSources(html);
 	return html;
 };
+
+export enum PostType {
+    InFocus = 0,
+    OutOfFocus = 1,
+    Default = -1
+}
