@@ -16,7 +16,7 @@
 					class="text-start cursor-pointer"
 					href={'/' + formatDate(post.data.created)}
 				>
-					<Post post={{ post }} {index} />
+					<Post {post} {index} />
 					{#if index > 0}
 						<a
 							href={`/${formatDate(post.data.created)}`}

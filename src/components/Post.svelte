@@ -23,7 +23,7 @@
 </script>
 
 <div
-	class={`${index === -1 && 'sticky'} flex flex-col gap-y-1 justify-center items-stretch w-full top-0 left-0 pb-2 pt-1 bg-base-100`}
+	class={`${index === -1 && 'sticky z-10'} flex flex-col gap-y-1 justify-center items-stretch w-full top-0 left-0 pb-2 pt-1 bg-base-100`}
 >
 	{#if index === -1}
 		<div class="flex justify-between items-center gap-2 pt-2">
@@ -65,7 +65,10 @@
 
 <div class="divider my-2" />
 
-<Comments {comments} />
+<section class="bg-base-200 -mx-4 pt-4 px-2 overflow-hidden">
+
+	<Comments {comments} />
+</section>
 
 <style>
 	/* global because if not will not properly target html inside of html object */

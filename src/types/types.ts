@@ -34,6 +34,13 @@ type PostComment = {
 	data: CommentData;
 };
 
+type FormattedComment = {
+	id: string;
+	parentId: string;
+	body: string;
+	level: number;
+};
+
 type CommentData = {
 	subreddit_id: string;
 	approved_at_utc: null;
@@ -57,7 +64,7 @@ type CommentData = {
 			children: PostComment[];
 			before: null;
 		};
-	 } | undefined;
+	} | undefined;
 	user_reports: any[];
 	saved: boolean;
 	id: string;
