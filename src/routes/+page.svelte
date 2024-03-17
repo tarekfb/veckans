@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import Post from '../components/Post.svelte';
-	import { formatDate } from '../utils';
+	import { PostType, formatDate } from '../utils';
 
 	export let data: PageData;
 </script>
@@ -16,7 +16,7 @@
 					class="text-start cursor-pointer"
 					href={'/' + formatDate(post.data.created)}
 				>
-					<Post post={{ post }} {index} />
+					<Post {post} postType={index === 0 ? PostType.InFocus : PostType.OutOfFocus} />
 					{#if index > 0}
 						<a
 							href={`/${formatDate(post.data.created)}`}

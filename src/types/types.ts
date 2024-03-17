@@ -1,3 +1,134 @@
+type Token = {
+	access_token: string;
+	token_type: string;
+	expires_in: number;
+	scope: string;
+}
+
+type Listing = {
+	kind: string;
+	data: {
+		after: string | null;
+		dist: number | null;
+		modhash: string;
+		geo_filter: string;
+		children: PostComment[];
+		before: string | null;
+	};
+};
+
+type Replies = {
+	kind: string;
+	data: {
+		after: string | null;
+		dist: number | null;
+		modhash: string;
+		geo_filter: string;
+		children: PostComment[];
+		before: string | null;
+	};
+}
+
+type RecursiveComment = {
+	comment: PostComment;
+	level: number;
+};
+
+type PostComment = {
+	kind: string;
+	data: CommentData;
+};
+
+type FormattedComment = {
+	id: string;
+	parentId: string;
+	body: string;
+	level: number;
+};
+
+type CommentData = {
+	subreddit_id: string;
+	approved_at_utc: null;
+	author_is_blocked: boolean;
+	comment_type: null;
+	awarders: any[];
+	mod_reason_by: null;
+	banned_by: null;
+	author_flair_type: string;
+	total_awards_received: number;
+	subreddit: string;
+	author_flair_template_id: null;
+	likes: null;
+	replies: {
+		kind: string;
+		data: {
+			after: null;
+			dist: null;
+			modhash: string;
+			geo_filter: string;
+			children: PostComment[];
+			before: null;
+		};
+	} | undefined;
+	user_reports: any[];
+	saved: boolean;
+	id: string;
+	banned_at_utc: null;
+	mod_reason_title: null;
+	gilded: number;
+	archived: boolean;
+	collapsed_reason_code: null;
+	no_follow: boolean;
+	author: string;
+	can_mod_post: boolean;
+	created_utc: number;
+	send_replies: boolean;
+	parent_id: string;
+	score: number;
+	author_fullname: string;
+	approved_by: null;
+	mod_note: null;
+	all_awardings: any[];
+	collapsed: boolean;
+	body: string;
+	edited: boolean;
+	top_awarded_type: null;
+	author_flair_css_class: null;
+	name: string;
+	is_submitter: boolean;
+	downs: number;
+	author_flair_richtext: any[];
+	author_patreon_flair: boolean;
+	body_html: string;
+	removal_reason: null;
+	collapsed_reason: null;
+	distinguished: null;
+	associated_award: null;
+	stickied: boolean;
+	author_premium: boolean;
+	can_gild: boolean;
+	gildings: Record<string, number>;
+	unrepliable_reason: null;
+	author_flair_text_color: null;
+	score_hidden: boolean;
+	permalink: string;
+	subreddit_type: string;
+	locked: boolean;
+	report_reasons: null;
+	created: number;
+	author_flair_text: null;
+	treatment_tags: any[];
+	link_id: string;
+	subreddit_name_prefixed: string;
+	controversiality: number;
+	depth: number;
+	author_flair_background_color: null;
+	collapsed_because_crowd_control: null;
+	mod_reports: any[];
+	num_reports: null;
+	ups: number;
+};
+
 type PostCollection = {
 	kind: string;
 	data: {

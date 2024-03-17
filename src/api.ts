@@ -19,8 +19,7 @@ export const fetchAccessToken = async () => {
 
 	if (!response.ok)
 		throw new Error(`Failed to fetch tokens. Status: ${response.status}`);
-
-	const tokens = await response.json();
+	const tokens: Token = await response.json();
 	if (!tokens) throw new Error(`Failed to read tokens as json.`);
 
 	return tokens;
@@ -37,7 +36,7 @@ export const fetchPosts = async (): Promise<RawPost[]> => {
 	if (!response.ok)
 		throw new Error(`Failed to fetch posts. Status: ${response.status}`);
 
-	const data = (await response.json()) as PostCollection;
+	const data: PostCollection = await response.json();
 	if (!data || data.data.children.length < 1) throw new Error('No posts found');
 
 	const posts: RawPost[] = [];
@@ -48,5 +47,22 @@ export const fetchPosts = async (): Promise<RawPost[]> => {
 					posts.push(child);
 	});
 
+
 	return posts;
 };
+
+export const fetchComments = async (subreddit: string, postId: string): Promise<any> => {
+
+	const { access_token } = await fetchAccessToken();
+
+	const response = await fetch(`https://oauth.reddit.com/r/${subreddit}/comments/${postId}`, {
+		method: "GET",
+		headers: { authorization: `bearer ${access_token}` },
+	});
+
+	if (!response.ok)
+		throw new Error(`Failed to fetch posts. Status: ${response.status}`);
+
+	const data: Listing[] = await response.json();
+	return data[1].data.children;
+}
