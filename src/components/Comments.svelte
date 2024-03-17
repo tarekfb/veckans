@@ -22,36 +22,23 @@
 	};
 </script>
 
-<!-- 
 <ul>
 	{#each comments as comment, index (index)}
-		<Comment author={comment.data.author} body={comment.data.body} margin={0} />
-		{#each getChildrenOfComment( { comment: comment, level: 0 }, ) as formattedComment}
+		<Comment
+			author={comment.data.author}
+			body={comment.data.body}
+			level={0}
+			score={comment.data.score}
+			url={`https://reddit.com/${comment.data.permalink}`}
+		/>
+		{#each getChildrenOfComment( { comment: comment, level: 1 }, ) as formattedComment}
 			<Comment
 				author={formattedComment.comment.data.author}
 				body={formattedComment.comment.data.body}
-				margin={formattedComment.level * 10}
+				level={formattedComment.level}
+				score={formattedComment.comment.data.score}
+				url={`https://reddit.com/${formattedComment.comment.data.permalink}`}
 			/>
 		{/each}
-		<div class="divider my-2" />
-	{/each}
-</ul> -->
-<ul>
-	{#each comments as comment, index (index)}
-	
-			<Comment
-				author={comment.data.author}
-				body={comment.data.body}
-				margin={0}
-			/>
-		{#each getChildrenOfComment( { comment: comment, level: 1 }, ) as formattedComment}
-		
-				<Comment
-					author={formattedComment.comment.data.author}
-					body={formattedComment.comment.data.body}
-					margin={formattedComment.level * 10}
-				/>
-		{/each}
-		<div class="divider my-2" />
 	{/each}
 </ul>
