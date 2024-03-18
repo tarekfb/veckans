@@ -3,6 +3,9 @@
 	import MoonIcon from '../components/MoonIcon.svelte';
 	import SunIcon from '../components/SunIcon.svelte';
 	import { onMount } from 'svelte';
+	import MdiArrownDownThin from 'virtual:icons/mdi/ArrowDownThin';
+	import MdiArrownUpThin from 'virtual:icons/mdi/ArrowUpThin';
+	import TablerSunFilled from 'virtual:icons/tabler/SunFilled';
 
 	let invertedPreferral = '';
 	onMount(() => {
@@ -27,5 +30,8 @@
 <label class="swap swap-rotate fixed bottom-5 right-5">
 	<input type="checkbox" class="theme-controller" value={invertedPreferral} />
 	<SunIcon />
+
 	<MoonIcon />
+
+	
 </label>
