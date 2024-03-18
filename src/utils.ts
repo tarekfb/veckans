@@ -17,7 +17,6 @@ export const formatDateReadable = (dateFromPost: number) => {
 };
 
 const processTextContent = (html: string) => {
-
 	const kallorIndex = html.toLowerCase().indexOf('källor');
 	if (kallorIndex === -1) return html;
 
@@ -37,8 +36,12 @@ const processSources = (html: string) => {
 
 	let content = html.substring(kallorIndex);
 
-	content = content.replaceAll('<a', '<a class="source"')
-	// .replaceAll('<li>', '<li class="paragraph">');
+	content = content
+		.replaceAll('<a', '<a class="source"')
+		.replaceAll(
+			'00151-9?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0960982224001519%3Fshowall%3Dtrue)',
+			'',
+		);
 
 	html = html.substring(0, kallorIndex) + content;
 	return html;
@@ -123,7 +126,7 @@ export const processHtml = (rawHtml: string) => {
 };
 
 export enum PostType {
-    InFocus = 0,
-    OutOfFocus = 1,
-    Default = -1
+	InFocus = 0,
+	OutOfFocus = 1,
+	Default = -1,
 }
