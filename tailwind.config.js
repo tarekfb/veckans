@@ -19,15 +19,11 @@ export default {
           secondary: "teal",
           "base-100": "#f3f4f6",
           "base-200": "#d7e1f5",
-          "test": "#d7e1f5",
-          '--title': 'white'
 
         },
         dark: {
           ...require("daisyui/src/theming/themes")["dark"],
           "base-200": "#011c27",
-          '--title': 'black'
-
         },
       },
 

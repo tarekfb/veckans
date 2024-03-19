@@ -71,11 +71,6 @@
 {/if}
 
 <style>
-	/* global because if not will not properly target html inside of html object */
-	/* :global(.post-container p, .post-container li) {
-		margin-bottom: 1em;
-	} */
-
 	:global(.post-container) {
 		overflow: hidden;
 	}
