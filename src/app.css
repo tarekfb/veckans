@@ -3,5 +3,16 @@
 @tailwind utilities;
 
 .btn-primary {
-    color: theme('colors.base-100');
+	color: theme('colors.base-100');
 }
+
+.text-gradient {
+	background-clip: text;
+	color: transparent;
+	background-image: linear-gradient(
+		to bottom,
+		theme('colors.base-content'),
+		theme('colors.base-100')
+	);
+}
+
