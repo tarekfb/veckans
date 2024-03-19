@@ -3,7 +3,7 @@
 	import MoonIcon from '../components/MoonIcon.svelte';
 	import SunIcon from '../components/SunIcon.svelte';
 	import { onMount } from 'svelte';
-
+	
 	let invertedPreferral = '';
 	onMount(() => {
 		invertedPreferral = window?.matchMedia?.('(prefers-color-scheme:dark)')
@@ -27,5 +27,6 @@
 <label class="swap swap-rotate fixed bottom-5 right-5">
 	<input type="checkbox" class="theme-controller" value={invertedPreferral} />
 	<SunIcon />
+
 	<MoonIcon />
 </label>
