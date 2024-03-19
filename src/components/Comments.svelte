@@ -1,8 +1,10 @@
 <script lang="ts">
+	import { PostType } from '../utils';
 	import Comment from './Comment.svelte';
+	import { maxCommentsForFocused } from '../utils';
 
 	export let comments: PostComment[];
-
+	export let postType: PostType = PostType.Default;
 	const getChildrenOfComment = ({
 		comment,
 		level,
@@ -24,21 +26,34 @@
 
 <ul>
 	{#each comments as comment, index (index)}
-		<Comment
-			author={comment.data.author}
-			body={comment.data.body}
-			level={0}
-			score={comment.data.score}
-			url={`https://reddit.com/${comment.data.permalink}`}
-		/>
-		{#each getChildrenOfComment( { comment: comment, level: 1 }, ) as formattedComment}
+		{#if (postType === PostType.InFocus && index < maxCommentsForFocused + 1) || (postType !== PostType.InFocus)}
 			<Comment
-				author={formattedComment.comment.data.author}
-				body={formattedComment.comment.data.body}
-				level={formattedComment.level}
-				score={formattedComment.comment.data.score}
-				url={`https://reddit.com/${formattedComment.comment.data.permalink}`}
+				author={comment.data.author}
+				body={comment.data.body}
+				level={0}
+				score={comment.data.score}
+				url={`https://reddit.com/${comment.data.permalink}`}
 			/>
-		{/each}
+			{#each getChildrenOfComment( { comment: comment, level: 1 }, ) as formattedComment}
+				<Comment
+					author={formattedComment.comment.data.author}
+					body={formattedComment.comment.data.body}
+					level={formattedComment.level}
+					score={formattedComment.comment.data.score}
+					url={`https://reddit.com/${formattedComment.comment.data.permalink}`}
+				/>
+			{/each}
+		{/if}
+		{#if postType === PostType.InFocus && index === maxCommentsForFocused + 1}
+			<div class="text-gradient">
+				<Comment
+					author={comment.data.author}
+					body={comment.data.body}
+					level={0}
+					score={comment.data.score}
+					url={`https://reddit.com/${comment.data.permalink}`}
+				/>
+			</div>
+		{/if}
 	{/each}
 </ul>

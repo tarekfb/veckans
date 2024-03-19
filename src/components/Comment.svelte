@@ -24,11 +24,12 @@
 		</div>
 		<div class="flex justify-between space-x-2 items-center">
 			<span>{score}</span>
-			<div class="flex flex-col justify-center">
-				<MdiArrownUpThin />
-				<MdiArrownDownThin />
-			</div>
+			{#if score > 0}
+				<MdiArrownUpThin class="text-primary" />
+			{:else if score < 0}
+				<MdiArrownDownThin class="text-red-400" />
+			{/if}
 		</div>
 	</div>
-	<p>{body}</p>
+	<p class="break-words max-w-full overflow-x-hidden">{body}</p>
 </li>

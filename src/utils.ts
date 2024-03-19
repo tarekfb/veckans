@@ -130,3 +130,6 @@ export enum PostType {
 	OutOfFocus = 1,
 	Default = -1,
 }
+
+export const maxCommentsForFocused = 2;
+	 

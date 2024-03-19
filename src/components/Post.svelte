@@ -33,7 +33,7 @@
 			</a>
 		</div>
 	{:else}
-		<PostTitle {post} postType={postType} />
+		<PostTitle {post} {postType} />
 	{/if}
 
 	<div class="flex items-center gap-2 text-sm">
@@ -59,14 +59,16 @@
 	<div class="divider my-2" />
 </div>
 
-<div class={`post-container ${postType === PostType.OutOfFocus && 'text-gradient'}`}>
+<div
+	class={`post-container ${postType === PostType.OutOfFocus && 'text-gradient'}`}
+>
 	{@html html}
 </div>
 
-{#if postType === PostType.Default}
+{#if postType === PostType.Default || postType === PostType.InFocus}
 	<div class="divider my-2" />
-	<section class="overflow-hidden">
-		<Comments {comments} />
+	<section class="max-w-">
+		<Comments {comments} {postType} />
 	</section>
 {/if}
 
@@ -106,14 +108,4 @@
 		}
 	}
 	/* end of copy paste */
-
-	.text-gradient {
-		background-clip: text;
-		color: transparent;
-		background-image: linear-gradient(
-			to bottom,
-			theme('colors.base-content'),
-			theme('colors.base-100')
-		);
-	}
 </style>
