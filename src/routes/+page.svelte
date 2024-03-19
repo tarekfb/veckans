@@ -16,7 +16,11 @@
 					class="text-start cursor-pointer"
 					href={'/' + formatDate(post.data.created)}
 				>
-					<Post {post} postType={index === 0 ? PostType.InFocus : PostType.OutOfFocus} />
+					<Post
+						{post}
+						postType={index === 0 ? PostType.InFocus : PostType.OutOfFocus}
+						comments={data.commentsOnFocusedPost}
+					/>
 					{#if index > 0}
 						<a
 							href={`/${formatDate(post.data.created)}`}

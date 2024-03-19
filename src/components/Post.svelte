@@ -62,8 +62,8 @@
 <div class={`post-container ${postType === PostType.OutOfFocus && 'text-gradient'}`}>
 	{@html html}
 </div>
-
-{#if postType === PostType.Default}
+ 
+{#if postType === PostType.Default || postType === PostType.InFocus}
 	<div class="divider my-2" />
 	<section class="overflow-hidden">
 		<Comments {comments} />

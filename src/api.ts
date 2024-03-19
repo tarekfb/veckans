@@ -51,7 +51,7 @@ export const fetchPosts = async (): Promise<RawPost[]> => {
 	return posts;
 };
 
-export const fetchComments = async (subreddit: string, postId: string): Promise<any> => {
+export const fetchComments = async (subreddit: string, postId: string): Promise<PostComment[]> => {
 
 	const { access_token } = await fetchAccessToken();
 

@@ -1,11 +1,12 @@
 import { error } from '@sveltejs/kit';
-import { fetchPosts } from '../api';
+import { fetchComments, fetchPosts } from '../api';
 
 /** @type {import('./$types').PageServerLoad} */
 export const load = async () => {
 	try {
 		const posts = await fetchPosts();
-		return { posts };
+		const commentsOnFocusedPost = await fetchComments(posts[0].data.subreddit, posts[0].data.id);
+		return { posts, commentsOnFocusedPost  };
 	} catch (e: unknown) {
 		if (e instanceof Error) {
 			console.error('Error fetching posts:', e.message);
