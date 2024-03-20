@@ -29,7 +29,7 @@
 </script>
 
 <div class="navbar bg-base-100 sticky top-0 left-0 px-4">
-	<div class="flex flex-col flex-1 items-start">
+	<div class="flex flex-col flex-1 items-start justify-center">
 		<h1>
 			<a class="btn btn-ghost text-2xl" href="/">Veckans</a>
 		</h1>
