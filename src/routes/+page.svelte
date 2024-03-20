@@ -30,24 +30,3 @@
 		{/each}
 	</ol>
 </main>
-
-<!-- 
-<main class="pb-2 px-4">
-	{#each data.posts as post, index (index)}
-		<li
-			class="flex flex-col items-start p-3 bg-base-100 mb-4 rounded-lg shadow-lg"
-		>
-			<a
-				class="text-start cursor-pointer"
-				href={'/' + formatDate(post.data.created)}
-			>
-				<Post {post} comments={data.commentsOnFocusedPost} />
-				{#if index > 0}
-					<a href={`/${formatDate(post.data.created)}`} class="btn btn-primary">
-						Läs hela
-					</a>
-				{/if}
-			</a>
-		</li>
-	{/each}
-</main> -->
