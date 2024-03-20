@@ -29,11 +29,13 @@
 </script>
 
 <div class="navbar bg-base-100 sticky top-0 left-0 px-4">
-	<div class="flex-1 flex flex-col items-start justify-center overflow-x-hidden">
+	<div
+		class="flex-1 flex flex-col items-start justify-center overflow-x-hidden text-center"
+	>
 		<h1>
 			<a class="btn btn-ghost text-2xl" href="/">Veckans</a>
 		</h1>
-		<h2 class="text-sm opacity-75">
+		<h2 class="text-xs opacity-75">
 			Text:
 			<a
 				href="https://www.reddit.com/user/smurfjojjo123"
@@ -42,9 +44,9 @@
 		</h2>
 	</div>
 	<div class="flex-none">
-		<ul class="menu menu-horizontal px-1">
-			<li><a href="/about">Om sidan</a></li>
-			<li><a href={`/${lastMonday}`}>Senaste</a></li>
+		<ul class="menu menu-horizontal">
+			<li><a href="/about" class="p-1">Om sidan</a></li>
+			<li><a href={`/${lastMonday}`} class="p-1">Senaste</a></li>
 			<!-- <li>
 				<details>
 					<summary>Nyheter</summary>
