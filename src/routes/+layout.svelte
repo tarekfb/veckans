@@ -1,16 +1,9 @@
 <script lang="ts">
 	import '../app.css';
-	import MoonIcon from '../components/MoonIcon.svelte';
-	import SunIcon from '../components/SunIcon.svelte';
-	import { onMount } from 'svelte';
+	import Navbar from '../components/Navbar.svelte';
+	
 
-	let invertedPreferral = '';
-	onMount(() => {
-		invertedPreferral = window?.matchMedia?.('(prefers-color-scheme:dark)')
-			?.matches
-			? 'light'
-			: 'dark';
-	});
+	
 </script>
 
 <svelte:head>
@@ -22,10 +15,5 @@
 	/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </svelte:head>
+<Navbar />
 <slot />
-
-<label class="swap swap-rotate fixed bottom-5 right-5">
-	<input type="checkbox" class="theme-controller" value={invertedPreferral} />
-	<SunIcon />
-	<MoonIcon />
-</label>

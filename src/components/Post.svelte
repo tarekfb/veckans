@@ -23,7 +23,7 @@
 </script>
 
 <div
-	class={`${postType === PostType.Default && 'sticky z-10'} flex flex-col gap-y-1 justify-center items-stretch w-full top-0 left-0 pb-2 pt-1 bg-base-100`}
+	class={` flex flex-col gap-y-1 justify-center items-stretch  pb-2 pt-1 ${postType === PostType.Default && '-mx-4 px-4 bg-gradient-to-b from-base-200 to-base-100'}`}
 >
 	{#if postType === -1}
 		<div class="flex justify-between items-center gap-2 pt-2">
@@ -46,17 +46,7 @@
 		<h2 class="font-mono whitespace-nowrap">
 			{formatDateReadable(created)}
 		</h2>
-		|
-		<span>
-			Text:
-			<a
-				href="https://www.reddit.com/user/smurfjojjo123"
-				class="link link-primary">@smurfjojjo123</a
-			>
-		</span>
 	</div>
-
-	<div class="divider my-2" />
 </div>
 
 <div

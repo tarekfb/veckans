@@ -22,7 +22,7 @@
 <div class="divider px-6 my-6" />
 <main class="px-6">
 	<h1 class="text-3xl mb-3">
-		Stöd att hemsidan finns kvar, och att inlägg trillar in
+		Stöd att hemsidan finns kvar och att inlägg trillar in
 	</h1>
 	<p class="mb-5">
 		I och med all positiv feedback på
