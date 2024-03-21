@@ -4,28 +4,28 @@
 
 <div class="h-screen bg-base-200">
 	<section
-		class="flex flex-col items-center justify-center py-10 md:py-24 bg-gradient-to-b base-gradient-colors md:p-16 md:h-3/6"
+		class="flex flex-col items-center justify-center pb-5 pt-2 bg-gradient-to-b base-gradient-colors md:px-12 md:pt-0 md:h-2/6"
 	>
 		<div
-			class="flex justify-between w-full text-3xl font-mono text-center px-5 md:text-8xl"
+			class="flex justify-between w-full text-3xl font-mono text-center px-5 md:px-20 md:text-6xl"
 		>
 			<p>"</p>
 			<p>"</p>
 		</div>
-		<h1 class="text-2xl -mt-2 font-semibold px-10 md:text-6xl md:px-40">
+		<h1 class="text-2xl -mt-2 font-semibold px-10 md:text-4xl md:px-40">
 			here’s the paradox: the image of a dangerous world has never been
 			broadcast more effectively than it is now, while the world has never been
 			less violent and more safe.
 		</h1>
-		<h2 class="mt-2 px-10 md:text-4xl md:px-28">
+		<h2 class="mt-2 px-10 md:text-2xl md:px-64">
 			― Hans Rosling, Factfulness: Ten Reasons We're Wrong About the World—and
 			Why Things Are Better Than You Think
 		</h2>
 	</section>
-	<main class="px-6 md:px-16 bg-gradient-to-t base-gradient-colors md:h-2/5">
+	<main class="px-6 md:px-12 bg-gradient-to-t base-gradient-colors md:h-2/5 flex flex-col">
 		<div class="divider mt-0" />
-		<h1 class="text-3xl mb-3 md:text-6xl">Stöd oss</h1>
-		<p class="mb-5 md:mb-10 md:text-3xl">
+		<h1 class="text-3xl mb-3 md:text-4xl md:mt-6">Stöd oss</h1>
+		<p class="mb-5 md:mb-12 md:text-xl">
 			I och med all positiv feedback på
 			<a
 				href="https://www.reddit.com/r/sweden/?f=flair_name%3A%22Positiva%20Nyheter%22"
@@ -39,8 +39,8 @@
 		<div
 			class="flex justify-evenly space-x-5 pb-5 md:justify-center md:items-center md:h-5/6"
 		>
-			<div class="card bg-base-100 shadow-xl rounded-t-3xl">
-				<figure class="">
+			<div class="card bg-base-100 shadow-xl md:rounded-[40px] md:w-4/6 max-w-3xl ">
+				<figure>
 					<img src={img} alt="Buy me a coffee logo" />
 				</figure>
 				<div class="card-body">
@@ -61,6 +61,7 @@
 		</div>
 	</main>
 </div>
+
 <!-- <div>
 	<div class="card bg-primary-content shadow-xl">
 		<figure>
