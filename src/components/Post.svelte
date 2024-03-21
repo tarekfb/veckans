@@ -22,7 +22,7 @@
 	if (postType === PostType.OutOfFocus) html = truncate(html, 50);
 </script>
 
-<div
+<section
 	class={` flex flex-col gap-y-1 justify-center items-stretch  pb-2 pt-1 ${postType === PostType.Default && '-mx-4 px-4 bg-gradient-to-b base-gradient-colors'}`}
 >
 	{#if postType === -1}
@@ -47,13 +47,13 @@
 			{formatDateReadable(created)}
 		</h2>
 	</div>
-</div>
+</section>
 
-<div
+<main
 	class={`post-container ${postType === PostType.OutOfFocus && 'text-gradient'}`}
 >
 	{@html html}
-</div>
+</main>
 
 {#if postType === PostType.Default || postType === PostType.InFocus}
 	<div class="divider my-2" />

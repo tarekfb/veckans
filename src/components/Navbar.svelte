@@ -28,13 +28,13 @@
 	// later replace this with posts from store, and insert all in details block
 </script>
 
-<div class="navbar sticky top-0 left-0 px-4 bg-base-200">
+<div class="navbar sticky top-0 left-0 px-4 bg-base-200 py-2">
 	<div
-		class="flex-1 flex flex-col md:flex-row items-start md:items-center justify-start text-left overflow-hidden"
+		class="flex-1 flex flex-col py-2 md:flex-row items-start md:items-center justify-start text-left overflow-hidden"
 	>
 		<h1>
 			<a
-				class="btn-ghost py-2 px-1.5 rounded-lg outline-none ring-0 text-2xl justify-start text-start font-mono md:text-6xl"
+				class="btn-ghost py-1 px-1.5 rounded-lg hover:rounded-lg focus:rounded-lg active:rounded-lg text-2xl justify-start text-start font-mono md:text-6xl"
 				href="/">Veckans</a
 			>
 		</h1>
