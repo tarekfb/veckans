@@ -25,7 +25,7 @@
 	<main class="px-6 md:px-16 bg-gradient-to-t base-gradient-colors md:h-2/5">
 		<div class="divider mt-0" />
 		<h1 class="text-3xl mb-3 md:text-6xl">Stöd oss</h1>
-		<p class="mb-5 md:text-3xl">
+		<p class="mb-5 md:mb-10 md:text-3xl">
 			I och med all positiv feedback på
 			<a
 				href="https://www.reddit.com/r/sweden/?f=flair_name%3A%22Positiva%20Nyheter%22"
@@ -40,7 +40,7 @@
 			class="flex justify-evenly space-x-5 pb-5 md:justify-center md:items-center md:h-5/6"
 		>
 			<div class="card bg-base-100 shadow-xl rounded-t-3xl">
-				<figure class="-mt-1 md:-mt-6">
+				<figure class="">
 					<img src={img} alt="Buy me a coffee logo" />
 				</figure>
 				<div class="card-body">
