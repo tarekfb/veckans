@@ -28,14 +28,17 @@
 	// later replace this with posts from store, and insert all in details block
 </script>
 
-<div class="navbar bg-base-100 sticky top-0 left-0 px-4">
+<div class="navbar sticky top-0 left-0 px-4 bg-base-200">
 	<div
-		class="flex-1 flex flex-col items-start justify-center overflow-x-hidden text-center"
+		class="flex-1 flex flex-col md:flex-row items-start md:items-center justify-start text-left overflow-hidden"
 	>
 		<h1>
-			<a class="btn btn-ghost text-2xl" href="/">Veckans</a>
+			<a
+				class="btn-ghost py-2 px-1.5 rounded-lg outline-none ring-0 text-2xl justify-start text-start font-mono md:text-6xl"
+				href="/">Veckans</a
+			>
 		</h1>
-		<h2 class="text-xs opacity-75">
+		<h2 class="text-xs px-2 opacity-75 md:text-3xl">
 			Text:
 			<a
 				href="https://www.reddit.com/user/smurfjojjo123"
@@ -43,10 +46,10 @@
 			>
 		</h2>
 	</div>
-	<div class="flex-none">
-		<ul class="menu menu-horizontal">
-			<li><a href="/about" class="p-1">Om sidan</a></li>
-			<li><a href={`/${lastMonday}`} class="p-1">Senaste</a></li>
+	<div class="flex-none font-semibold">
+		<ul class="menu menu-horizontal md:text-3xl">
+			<li><a href="/about" class="p-1 md:mr-6 md:p-4">Om sidan</a></li>
+			<li><a href={`/${lastMonday}`} class="p-1 md:p-4">Senaste</a></li>
 			<!-- <li>
 				<details>
 					<summary>Nyheter</summary>
@@ -56,7 +59,7 @@
 			</li> -->
 		</ul>
 	</div>
-	<label class="swap swap-rotate">
+	<label class="swap swap-rotate md:m-4 btn-ghost p-2 rounded-lg">
 		<input type="checkbox" class="theme-controller" value={invertedPreferral} />
 		<SunIcon />
 		<MoonIcon />

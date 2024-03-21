@@ -23,7 +23,7 @@
 </script>
 
 <div
-	class={` flex flex-col gap-y-1 justify-center items-stretch  pb-2 pt-1 ${postType === PostType.Default && '-mx-4 px-4 bg-gradient-to-b from-base-200 to-base-100'}`}
+	class={` flex flex-col gap-y-1 justify-center items-stretch  pb-2 pt-1 ${postType === PostType.Default && '-mx-4 px-4 bg-gradient-to-b base-gradient-colors'}`}
 >
 	{#if postType === -1}
 		<div class="flex justify-between items-center gap-2 pt-2">
