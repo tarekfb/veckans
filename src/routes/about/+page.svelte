@@ -51,7 +51,7 @@
 							fortsatt finns tillgängliga här.
 						</p>
 						<div class="card-actions justify-center">
-							<a href="https://buymeacoffee.com/tarekb" class="btn btn-primary"
+							<a href="https://ko-fi.com/tarekb" class="btn btn-primary"
 								>Ge stöd</a
 							>
 						</div>
@@ -81,7 +81,7 @@
 		</div> -->
 <!-- <p class="mb-3">
 		Vill ni stödja hemsidan kan ni göra det <a
-			href="https://buymeacoffee.com/tarekb"
+			href="https://ko-fi.com/tarekb"
 			class="link link-primary">här</a
 		>.
 	</p> -->
