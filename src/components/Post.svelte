@@ -36,13 +36,13 @@
 		<PostTitle {post} {postType} />
 	{/if}
 
-	<div class="flex items-center gap-2 text-sm">
+	<div class="flex items-center gap-4 text-sm">
 		<a
 			href={url}
 			class="text-2xl text-red-600 rounded-full bg-white"
 			placeholder="Läs på reddit.com"><MdiReddit /></a
 		>
-		<h2 class="font-mono whitespace-nowrap">
+		<h2 class="font-mono whitespace-nowrap opacity-75">
 			{formatDateReadable(created)}
 		</h2>
 	</div>

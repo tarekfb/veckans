@@ -26,14 +26,21 @@
 		<div class="divider mt-0" />
 		<h1 class="text-3xl mb-3 md:text-4xl md:mt-6">Stöd oss</h1>
 		<p class="mb-5 md:mb-12 md:text-xl">
+			Här hamnar alla gamla och kommande av <a
+			href="https://www.reddit.com/r/sweden/?f=flair_name%3A%22Positiva%20Nyheter%22"
+			class="link link-primary">smurfjojjo123's inlägg på reddit</a
+		>, sålänge jag har råd att underhålla sidan. Hämtningen sker automatiskt, med smurfjojjos123's tillstånd.
+		Koden finns på <a href="https://github.com/tarekfb/veckans" class="link link-primary">github.</a>
+		Feedback, önskemål och synpunkter uppmuntras och det kan ges <a href="https://www.reddit.com/message/compose?to=amteapotsometimes" class="link link-primary">här.</a>
+		</p>
+		<p class="mb-5 md:mb-12 md:text-xl">
 			I och med all positiv feedback på
 			<a
 				href="https://www.reddit.com/r/sweden/?f=flair_name%3A%22Positiva%20Nyheter%22"
 				class="link link-primary">smurfjojjo123's inlägg</a
 			>, samt att jag själv upplevt att man hör alldeles för få positiva nyheter
 			ville jag bidra till initiativet. Om du håller med kan du välja att stödja
-			hemsidans hosting, domännamn & underhåll eller smurfjojjo123 fortsatta
-			skapande av inlägg.
+			hemsidans hosting, domännamn & underhåll. Länk till att stödja smurfjojjo123 direkt kommmer strax!
 		</p>
 
 		<div
@@ -50,11 +57,11 @@
 							Hjälp till att betala för kostnaderna för hemsidan så att inläggen
 							fortsatt finns tillgängliga här.
 						</p>
-						<div class="card-actions justify-center">
-							<a href="https://ko-fi.com/tarekb" class="btn btn-primary"
-								>Ge stöd</a
-							>
-						</div>
+					</div>
+					<div class="card-actions justify-end">
+						<a href="https://ko-fi.com/tarekb" class="btn btn-primary"
+							>Ge stöd</a
+						>
 					</div>
 				</div>
 			</div>
@@ -62,7 +69,7 @@
 	</main>
 </div>
 
-<!-- <div>
+<!-- <div> måste också ändra texten ovanvör min buy me a coffe knapp
 	<div class="card bg-primary-content shadow-xl">
 		<figure>
 			<img src={img} alt="Buy me a coffee logo" />
