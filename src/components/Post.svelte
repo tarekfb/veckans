@@ -42,7 +42,7 @@
 			class="text-2xl text-red-600 rounded-full bg-white"
 			placeholder="Läs på reddit.com"><MdiReddit /></a
 		>
-		<h2 class="font-mono whitespace-nowrap">
+		<h2 class="font-mono whitespace-nowrap opacity-75">
 			{formatDateReadable(created)}
 		</h2>
 	</div>

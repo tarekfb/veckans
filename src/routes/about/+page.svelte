@@ -31,7 +31,7 @@
 			class="link link-primary">smurfjojjo123's inlägg på reddit</a
 		>, sålänge jag har råd att underhålla sidan. Hämtningen sker automatiskt, med smurfjojjos123's tillstånd.
 		Koden finns på <a href="https://github.com/tarekfb/veckans" class="link link-primary">github.</a>
-		Feedback uppmuntras och det kan ges <a href="https://www.reddit.com/message/compose?to=amteapotsometimes" class="link link-primary">här.</a>
+		Feedback, önskemål och synpunkter uppmuntras och det kan ges <a href="https://www.reddit.com/message/compose?to=amteapotsometimes" class="link link-primary">här.</a>
 		</p>
 		<p class="mb-5 md:mb-12 md:text-xl">
 			I och med all positiv feedback på
