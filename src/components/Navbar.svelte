@@ -2,20 +2,8 @@
 	import MoonIcon from '../components/MoonIcon.svelte';
 	import SunIcon from '../components/SunIcon.svelte';
 	import { onMount } from 'svelte';
-
-	const findLastMonday = (): string => {
-		const today: Date = new Date();
-		const dayOfWeek: number = today.getDay(); // 0 for Sunday, 1 for Monday, and so on
-		const diff: number =
-			today.getDate() - dayOfWeek + (dayOfWeek === 0 ? -6 : 1); // Adjust to get the last Monday
-		const lastMonday: Date = new Date(today.setDate(diff));
-		const year = lastMonday.getFullYear().toString().slice(-2); // Extract last two digits of the year
-		let month: string | number = lastMonday.getMonth() + 1;
-		month = month < 10 ? '0' + month : month;
-		let day: string | number = lastMonday.getDate();
-		day = day < 10 ? '0' + day : day;
-		return `${day}-${month}-${year}`;
-	};
+	import { findLastMonday } from '../utils';
+	
 	const lastMonday = findLastMonday();
 
 	let invertedPreferral = '';
