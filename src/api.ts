@@ -8,6 +8,11 @@ export const fetchAccessToken = async () => {
 	params.append('duration', 'permanent');
 
 
+	const credentials = `${CLIENT_ID}:${CLIENT_SECRET}`;
+	const encoder = new TextEncoder();
+	const encodedCredentials = btoa(encoder.encode(credentials).toString());
+	
+	const authorization = `Basic ${encodedCredentials}`;
 
 	const response = await fetch('https://www.reddit.com/api/v1/access_token', {
 		method: 'POST',
@@ -15,7 +20,8 @@ export const fetchAccessToken = async () => {
 		headers: {
 			'User-Agent': USER_AGENT,
 			'Content-Type': 'application/x-www-form-urlencoded',
-			Authorization: `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
+			// Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+			Authorization: authorization,
 		},
 	});
 
