@@ -7,13 +7,15 @@ export const fetchAccessToken = async () => {
 	params.append('grant_type', 'client_credentials');
 	params.append('duration', 'permanent');
 
+
+
 	const response = await fetch('https://www.reddit.com/api/v1/access_token', {
 		method: 'POST',
 		body: params,
 		headers: {
 			'User-Agent': USER_AGENT,
 			'Content-Type': 'application/x-www-form-urlencoded',
-			Authorization: `Basic ${Buffer.from(`${CLIENT_ID}:${CLIENT_SECRET}`).toString('base64')}`,
+			Authorization: `Basic ${btoa(`${CLIENT_ID}:${CLIENT_SECRET}`)}`,
 		},
 	});
 
