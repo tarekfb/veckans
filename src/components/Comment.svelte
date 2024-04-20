@@ -21,7 +21,7 @@
 	<div class="flex justify-between">
 		<div class="flex items-center space-x-2">
 			<h2 class={`card-title ${author === newsAuthor && 'text-red-600'}`}>
-				{author} 
+				{author}
 			</h2>
 			<a
 				href={url}
@@ -42,8 +42,6 @@
 	<div class="break-words max-w-full overflow-x-hidden markdown">
 		<SvelteMarkdown source={body} />
 	</div>
-
-	<!-- <p class="break-words max-w-full overflow-x-hidden">{body}</p> -->
 </li>
 
 <style>
