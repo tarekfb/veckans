@@ -1,5 +1,6 @@
 <script lang="ts">
 	import img from '$lib/assets/bmc-button.png';
+	import { newsAuthor } from '../../utils';
 </script>
 
 <div class="h-screen bg-base-200">
@@ -22,31 +23,36 @@
 			Why Things Are Better Than You Think
 		</h2>
 	</section>
-	<main class="px-6 md:px-12 bg-gradient-to-t base-gradient-colors md:h-2/5 flex flex-col">
+	<main
+		class="px-6 md:px-12 bg-gradient-to-t base-gradient-colors md:h-2/5 flex flex-col"
+	>
 		<div class="divider mt-0" />
 		<h1 class="text-3xl mb-3 md:text-4xl md:mt-6">Stöd oss</h1>
 		<p class="mb-5 md:mb-12 md:text-xl">
 			Här hamnar alla gamla och kommande av <a
 			href="https://www.reddit.com/r/sweden/?f=flair_name%3A%22Positiva%20Nyheter%22"
-			class="link link-primary">smurfjojjo123's inlägg på reddit</a
-		>, sålänge jag har råd att underhålla sidan. Hämtningen sker automatiskt, med smurfjojjos123's tillstånd.
+			class="link link-primary">{newsAuthor}'s inlägg på reddit</a
+		>, sålänge jag har råd att underhålla sidan. Hämtningen sker automatiskt, med {newsAuthor}'s tillstånd.
 		Koden finns på <a href="https://github.com/tarekfb/veckans" class="link link-primary">github.</a>
-		Feedback, önskemål och synpunkter uppmuntras och kan ges <a href="https://www.reddit.com/message/compose?to=amteapotsometimes" class="link link-primary">via reddit.</a>
+		Feedback, önskemål och synpunkter uppmuntras och kan ges <a href="https://www.reddit.com/message/compose?to=amteapotsometimes" class="link link-primary">via reddit</a>.
 		</p>
 		<p class="mb-5 md:mb-12 md:text-xl">
 			I och med all positiv feedback på
 			<a
 				href="https://www.reddit.com/r/sweden/?f=flair_name%3A%22Positiva%20Nyheter%22"
-				class="link link-primary">smurfjojjo123's inlägg</a
+				class="link link-primary">{newsAuthor}'s inlägg</a
 			>, samt att jag själv upplevt att man hör alldeles för få positiva nyheter
 			ville jag bidra till initiativet. Om du håller med kan du välja att stödja
-			hemsidans hosting, domännamn & underhåll. Länk till att stödja smurfjojjo123 direkt kommmer strax!
+			hemsidans hosting, domännamn & underhåll. Länk till att stödja
+			{newsAuthor} direkt kommmer strax!
 		</p>
 
 		<div
 			class="flex justify-evenly space-x-5 pb-5 md:justify-center md:items-center md:h-5/6"
 		>
-			<div class="card bg-base-100 shadow-xl md:rounded-[40px] md:w-4/6 max-w-3xl ">
+			<div
+				class="card bg-base-100 shadow-xl md:rounded-[40px] md:w-4/6 max-w-3xl"
+			>
 				<figure>
 					<img src={img} alt="Buy me a coffee logo" />
 				</figure>
