@@ -1,4 +1,6 @@
 import { CLIENT_ID, CLIENT_SECRET, USER_AGENT } from '$env/static/private';
+import { newsAuthor } from './utils'
+
 export const fetchAccessToken = async () => {
 	if (!CLIENT_ID || !CLIENT_SECRET || !USER_AGENT)
 		throw new Error('Missing one more environment variables');
@@ -28,7 +30,7 @@ export const fetchAccessToken = async () => {
 export const fetchPosts = async (): Promise<RawPost[]> => {
 	const { access_token } = await fetchAccessToken();
 
-	const response = await fetch(`https://oauth.reddit.com/user/smurfjojjo123/submitted`, {
+	const response = await fetch(`https://oauth.reddit.com/user/${newsAuthor}/submitted`, {
 		method: "GET",
 		headers: { authorization: `bearer ${access_token}` },
 	});

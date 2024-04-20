@@ -2,7 +2,7 @@
 	import MoonIcon from '../components/MoonIcon.svelte';
 	import SunIcon from '../components/SunIcon.svelte';
 	import { onMount } from 'svelte';
-	import { findLastMonday } from '../utils';
+	import { findLastMonday, newsAuthor } from '../utils';
 	
 	const lastMonday = findLastMonday();
 
@@ -29,8 +29,8 @@
 		<h2 class="text-xs px-2 opacity-75 md:text-3xl">
 			Text:
 			<a
-				href="https://www.reddit.com/user/smurfjojjo123"
-				class="link link-primary">@smurfjojjo123</a
+				href="https://www.reddit.com/user/{newsAuthor}"
+				class="link link-primary">@{newsAuthor}</a
 			>
 		</h2>
 	</div>

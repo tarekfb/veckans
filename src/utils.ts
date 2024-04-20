@@ -1,3 +1,6 @@
+export const maxCommentsForFocused = 2;
+export const newsAuthor = "smurfjojjo123";
+
 export const formatDate = (dateFromPost: number) => {
 	const rawDate = new Date(dateFromPost * 1000);
 	const year = rawDate.getFullYear().toString().slice(2);
@@ -130,8 +133,6 @@ export enum PostType {
 	OutOfFocus = 1,
 	Default = -1,
 }
-
-export const maxCommentsForFocused = 2;
 
 export const findLastMonday = (): string => {
 	const today: Date = new Date();
