@@ -48,6 +48,7 @@
   "type": "module",
   "dependencies": {
     "@types/htmlparser2": "^3.10.7",
-    "daisyui": "^4.7.3"
+    "daisyui": "^4.7.3",
+    "svelte-markdown": "^0.4.1"
   }
 }
