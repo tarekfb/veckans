@@ -22,7 +22,7 @@
 	>
 		<h1>
 			<a
-				class="btn-ghost py-1 px-1.5 rounded-lg hover:rounded-lg focus:rounded-lg active:rounded-lg text-2xl justify-start text-start font-mono md:text-6xl"
+				class="btn-ghost py-1 px-1.5 rounded-lg hover:rounded-lg focus:rounded-lg active:rounded-lg text-2xl justify-start text-start font-mono md:text-6xl link-primary"
 				href="/">Veckans</a
 			>
 		</h1>
@@ -30,7 +30,7 @@
 			Text:
 			<a
 				href="https://www.reddit.com/user/smurfjojjo123"
-				class="link link-primary">@smurfjojjo123</a
+				class="link">@smurfjojjo123</a
 			>
 		</h2>
 	</div>
@@ -48,7 +48,7 @@
 		</ul>
 	</div>
 	<label class="swap swap-rotate md:m-4 btn-ghost p-2 rounded-lg">
-		<input type="checkbox" class="theme-controller" value={invertedPreferral} />
+		<input type="checkbox" class="theme-controller" value={invertedPreferral} aria-label="theme toggle" />
 		<SunIcon />
 		<MoonIcon />
 	</label>
