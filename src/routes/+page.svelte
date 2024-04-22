@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types';
 	import Post from '../components/Post.svelte';
-	import { PostType, formatDate } from '../utils';
+	import { PostType } from '../utils';
 	import ReadFull from '../components/ReadFull.svelte';
 	import { maxCommentsForFocused } from '../utils';
 
@@ -15,7 +15,7 @@
 				<Post
 					{post}
 					postType={index === 0 ? PostType.InFocus : PostType.OutOfFocus}
-					comments={data.commentsOnFocusedPost}
+					comments={data.commentsOnFocusedPost.comments}
 				/>
 
 				{#if index > 0 || (post.data.num_comments > maxCommentsForFocused && index === PostType.InFocus)}

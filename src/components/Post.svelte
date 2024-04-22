@@ -60,9 +60,9 @@
 </main>
 
 {#if postType === PostType.Default || postType === PostType.InFocus}
-	<div class="divider my-2">
+	<div class="divider mb-2 mt-6">
 		<label class="swap swap-rotate">
-			<input type="checkbox" bind:checked={isShowingComments} />
+			<input type="checkbox" bind:checked={isShowingComments} aria-label="toggle comments" />
 			<MdiCommentOffOutline class="swap-on text-primary w-10 h-10 " />
 			<MdiCommentOutline class="swap-off text-primary w-10 h-10" />
 		</label>
