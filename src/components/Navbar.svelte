@@ -26,11 +26,11 @@
 				href="/">Veckans</a
 			>
 		</h1>
-		<h2 class="text-xs px-2 opacity-75 md:text-3xl">
+		<h2 class="text-xs px-2 text-base-content/75 md:text-3xl">
 			Text:
 			<a
 				href="https://www.reddit.com/user/{newsAuthor}"
-				class="link link-primary">@{newsAuthor}</a
+				class="link link-primary text-primary/75">@{newsAuthor}</a
 			>
 		</h2>
 	</div>
