@@ -2,6 +2,8 @@
 	import { processHtml, formatDateReadable, PostType } from '../utils';
 	import MdiKeyboardBackspace from 'virtual:icons/mdi/KeyboardBackspace';
 	import MdiReddit from 'virtual:icons/mdi/reddit';
+	import MdiCommentOffOutline from 'virtual:icons/mdi/CommentOffOutline';
+	import MdiCommentOutline from 'virtual:icons/mdi/CommentOutline';
 	import PostTitle from './PostTitle.svelte';
 	import Comments from './Comments.svelte';
 
@@ -20,13 +22,15 @@
 
 	let html = processHtml(selftext_html);
 	if (postType === PostType.OutOfFocus) html = truncate(html, 50);
+
+	$: isShowingComments = true;
 </script>
 
 <section
-	class={` flex flex-col gap-y-1 justify-center items-stretch  pb-2 pt-1 ${postType === PostType.Default && '-mx-4 px-4 bg-gradient-to-b base-gradient-colors'}`}
+	class={`flex flex-col gap-y-1 justify-center items-stretch  py-1 ${postType === PostType.Default && '-mx-4 px-4 bg-gradient-to-b base-gradient-colors'}`}
 >
 	{#if postType === -1}
-		<div class="flex justify-between items-center gap-2 pt-2">
+		<div class="flex justify-between items-center gap-4 pt-1">
 			<PostTitle {post} />
 			<a href={`/`} class="bg-primary rounded-full p-2 text-base-100">
 				<MdiKeyboardBackspace class="text-lg " />
@@ -36,7 +40,7 @@
 		<PostTitle {post} {postType} />
 	{/if}
 
-	<div class="flex items-center gap-4 text-sm">
+	<div class="flex items-center gap-4 text-sm mt-1">
 		<a
 			href={url}
 			class="text-2xl text-red-600 rounded-full bg-white"
@@ -56,10 +60,19 @@
 </main>
 
 {#if postType === PostType.Default || postType === PostType.InFocus}
-	<div class="divider my-2" />
-	<section class="max-w-">
-		<Comments {comments} {postType} />
-	</section>
+	<div class="divider my-2">
+		<label class="swap swap-rotate">
+			<input type="checkbox" bind:checked={isShowingComments} />
+			<MdiCommentOffOutline class="swap-on text-primary w-10 h-10 " />
+			<MdiCommentOutline class="swap-off text-primary w-10 h-10" />
+		</label>
+	</div>
+
+	{#if isShowingComments}
+		<section>
+			<Comments {comments} {postType} />
+		</section>
+	{/if}
 {/if}
 
 <style>

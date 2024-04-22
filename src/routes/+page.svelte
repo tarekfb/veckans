@@ -12,20 +12,15 @@
 	<ol>
 		{#each data.posts as post, index (index)}
 			<li class="flex flex-col p-3 bg-base-100 mb-4 rounded-lg shadow-lg">
-				<a
-					class="text-start cursor-pointer"
-					href={'/' + formatDate(post.data.created)}
-				>
-					<Post
-						{post}
-						postType={index === 0 ? PostType.InFocus : PostType.OutOfFocus}
-						comments={data.commentsOnFocusedPost}
-					/>
+				<Post
+					{post}
+					postType={index === 0 ? PostType.InFocus : PostType.OutOfFocus}
+					comments={data.commentsOnFocusedPost}
+				/>
 
-					{#if index > 0 || (post.data.num_comments > maxCommentsForFocused && index === PostType.InFocus)}
-						<ReadFull created={post.data.created} />
-					{/if}
-				</a>
+				{#if index > 0 || (post.data.num_comments > maxCommentsForFocused && index === PostType.InFocus)}
+					<ReadFull created={post.data.created} />
+				{/if}
 			</li>
 		{/each}
 	</ol>

@@ -6,7 +6,7 @@
 	const { title, created } = post.data;
 </script>
 
-<h1 class="flex text-lg font-semibold">
+<h1 class="flex text-xl md:text-2xl font-semibold">
 	{#if postType === PostType.Default}
 		{title}
 	{:else}

@@ -1,11 +1,11 @@
 <script lang="ts">
-    import { formatDate } from '../utils';
+	import { formatDate } from '../utils';
 
-    export let created: number;
+	export let created: number;
 </script>
-<a
-href={`/${formatDate(created)}`}
-class="btn btn-primary mt-4"
->
-Läs hela
-</a>
+
+<div>
+	<a href={`/${formatDate(created)}`} class="btn btn-primary mt-4">
+		Läs hela
+	</a>
+</div>
