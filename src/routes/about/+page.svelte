@@ -30,18 +30,11 @@
 		<h1 class="text-3xl mb-3 md:text-4xl md:mt-6">Stöd oss</h1>
 		<p class="mb-5 md:mb-12 md:text-xl">
 			Här hamnar alla gamla och kommande av <a
-				href="https://www.reddit.com/r/sweden/?f=flair_name%3A%22Positiva%20Nyheter%22"
-				class="link link-primary">{newsAuthor}'s inlägg på reddit</a
-			>, sålänge jag har råd att underhålla sidan. Hämtningen sker automatiskt,
-			med smurfjojjos123's tillstånd. Koden finns på
-			<a href="https://github.com/tarekfb/veckans" class="link link-primary"
-				>github.</a
-			>
-			Feedback, önskemål och synpunkter uppmuntras och det kan ges
-			<a
-				href="https://www.reddit.com/message/compose?to=amteapotsometimes"
-				class="link link-primary">här.</a
-			>
+			href="https://www.reddit.com/r/sweden/?f=flair_name%3A%22Positiva%20Nyheter%22"
+			class="link link-primary">{newsAuthor}'s inlägg på reddit</a
+		>, sålänge jag har råd att underhålla sidan. Hämtningen sker automatiskt, med {newsAuthor}'s tillstånd.
+		Koden finns på <a href="https://github.com/tarekfb/veckans" class="link link-primary">github.</a>
+		Feedback, önskemål och synpunkter uppmuntras och kan ges <a href="https://www.reddit.com/message/compose?to=amteapotsometimes" class="link link-primary">via reddit</a>.
 		</p>
 		<p class="mb-5 md:mb-12 md:text-xl">
 			I och med all positiv feedback på

@@ -45,15 +45,14 @@
 			{/each}
 		{/if}
 		{#if postType === PostType.InFocus && index === maxCommentsForFocused + 1}
-			<div class="text-gradient">
 				<Comment
 					author={comment.data.author}
 					body={comment.data.body}
 					level={0}
 					score={comment.data.score}
 					url={`https://reddit.com/${comment.data.permalink}`}
+					gradient={true}
 				/>
-			</div>
 		{/if}
 	{/each}
 </ul>
