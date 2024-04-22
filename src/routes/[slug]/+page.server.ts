@@ -1,45 +1,58 @@
-import { error, type LoadEvent } from '@sveltejs/kit';
 import { formatDate } from '../../utils';
-import { fetchComments, fetchPosts } from '../../api';
+import { fetchPosts } from '../../api';
+import { error } from '@sveltejs/kit';
 
-const findPost = (posts: RawPost[], date: string): RawPost | undefined => {
-	const foundChild = posts.find((child) => {
-		const mmddyy = formatDate(child.data.created);
-		return mmddyy === date;
-	});
+export const load = async ({ params, parent }) => {
+    const isValidDateFormat = (str: string): boolean => {
+        // 2digits-2digits-2digits
+        const regex = /^\d{2}-\d{2}-\d{2}$/;
+        return regex.test(str);
+    };
 
-	return foundChild;
-};
+    const findPost = (posts: RawPost[], date: string): RawPost | undefined => {
+        const foundChild = posts.find((child) => {
+            const mmddyy = formatDate(child.data.created);
+            return mmddyy === date;
+        });
 
-export const load = async ({ params }: LoadEvent) => {
-	try {
-		const posts = await fetchPosts();
-		if (!params.slug) error(404, 'Missing slug');
+        return foundChild;
+    };
 
-		const post = findPost(posts, params.slug);
-		if (!post) {
-			error(404, "Post not found or doesnt exist yet")
+    if (!isValidDateFormat(params.slug)) {
+        console.error('Page slug is not a valid format', params.slug);
+        error(404, {
+            message: "Page not found",
+        });
+    }
 
-		}
-		if (post.data.link_flair_richtext[0].t !== 'Positiva Nyheter') {
-			error(404, "Link flair rich text not matching 'Positiva Nyheter'")
-		}
+    const { posts, commentSections } = await parent();
+    const post = findPost(posts, params.slug);
 
-		const comments: PostComment[] = await fetchComments(post.data.subreddit, post.data.id);
-		return { post, comments };
-	} catch (e: unknown) {
-		if (e instanceof Error) {
-			console.error('Error fetching data:', e.message);
-			error(500, `Internal Server Error: ${e.message}`);
-		} else {
-			console.error('Unknown error:', e);
-			error(500, 'Internal Server Error');
-		}
-	}
-};
+    if (!post) {
+        throw new Error('Post not found or doesnt exist yet')
+    };
+    if (post.data.link_flair_richtext[0].t !== 'Positiva Nyheter') {
+        console.error('Link flair rich text not matching "Positiva Nyheter"');
+        error(500, "Link flair mismatch");
+    }
+
+    const commentsWithParent = commentSections.find(
+        (section) => section.parent === post.data.id,
+    );
+    if (!commentsWithParent) {
+        console.error(`Missing comment section for post ${post.data.id}`);
+        error(500, `Missing comments`);
+    }
+
+
+
+    return {
+        slug: params.slug
+    }
+}
 
 export const entries: import('./$types').EntryGenerator = async () => {
-	const posts = await fetchPosts();
-	const dates = posts.map((post) => ({ slug: formatDate(post.data.created) }));
-	return dates;
+    const posts = await fetchPosts();
+    const dates = posts.map((post) => ({ slug: formatDate(post.data.created) }));
+    return dates;
 };

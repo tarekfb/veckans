@@ -48,12 +48,11 @@ export const fetchPosts = async (): Promise<RawPost[]> => {
 				if (child.data.link_flair_richtext[0].t === 'Positiva Nyheter')
 					posts.push(child);
 	});
-
-
+	
 	return posts;
 };
 
-export const fetchComments = async (subreddit: string, postId: string): Promise<PostComment[]> => {
+export const fetchComments = async (subreddit: string, postId: string) => {
 
 	const { access_token } = await fetchAccessToken();
 
@@ -66,5 +65,5 @@ export const fetchComments = async (subreddit: string, postId: string): Promise<
 		throw new Error(`Failed to fetch posts. Status: ${response.status}`);
 
 	const data: Listing[] = await response.json();
-	return data[1].data.children;
+	return { parent: postId, comments: data[1].data.children };
 }
