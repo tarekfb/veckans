@@ -11,12 +11,6 @@ export const config = {
 };
 
 export const load = async ({ params, parent }) => {
-    const isValidDateFormat = (str: string): boolean => {
-        // 2digits-2digits-2digits
-        const regex = /^\d{2}-\d{2}-\d{2}$/;
-        return regex.test(str);
-    };
-
     const findPost = (posts: RawPost[], date: string): RawPost | undefined => {
         const foundChild = posts.find((child) => {
             const mmddyy = formatDate(child.data.created);
@@ -25,13 +19,6 @@ export const load = async ({ params, parent }) => {
 
         return foundChild;
     };
-
-    if (!isValidDateFormat(params.slug)) {
-        console.error('Page slug is not a valid format', params.slug);
-        error(404, {
-            message: "Page not found",
-        });
-    }
 
     const { posts, commentSections } = await parent();
     const post = findPost(posts, params.slug);
