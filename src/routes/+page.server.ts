@@ -5,7 +5,3 @@ export const config = {
         expiration: 300,
     }
 };
-
-export const load = () => {
-    console.log("test")
-}
