@@ -6,8 +6,6 @@ import { fetchComments, fetchPosts } from '../api';
 /** @type {import('./$types').PageServerLoad} */
 export const load = async () => {
     try {
-        console.log("test")
-
         const posts = await fetchPosts();
         const commentSections = await Promise.all(posts.map(async (post) => await fetchComments(post.data.subreddit, post.data.id)));
         const commentsOnFocusedPost = commentSections[0];
