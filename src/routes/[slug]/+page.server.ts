@@ -52,10 +52,10 @@ export const load = async ({ params, parent }) => {
         error(500, `Missing comments`);
     }
 
-
-
     return {
-        slug: params.slug
+        slug: params.slug,
+        comments: commentsWithParent.comments,
+        post,
     }
 }
 
