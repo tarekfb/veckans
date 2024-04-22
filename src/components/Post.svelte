@@ -43,9 +43,9 @@
 			aria-label="reddit post link"
 			placeholder="Läs på reddit.com"><MdiReddit /></a
 		>
-		<h2 class="font-mono whitespace-nowrap opacity-75">
-			{formatDateReadable(created)}
-		</h2>
+			<h2 class="font-mono whitespace-nowrap text-base-content/75">
+				{formatDateReadable(created)}
+			</h2>
 	</div>
 </section>
 

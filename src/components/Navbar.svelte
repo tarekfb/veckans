@@ -3,7 +3,7 @@
 	import SunIcon from '../components/SunIcon.svelte';
 	import { onMount } from 'svelte';
 	import { findLastMonday, newsAuthor } from '../utils';
-	
+
 	const lastMonday = findLastMonday();
 
 	let invertedPreferral = '';
@@ -26,11 +26,11 @@
 				href="/">Veckans</a
 			>
 		</h1>
-		<h2 class="text-xs px-2 opacity-75 md:text-3xl">
+		<h2 class="text-xs px-2 text-base-content/75 md:text-3xl">
 			Text:
 			<a
 				href="https://www.reddit.com/user/{newsAuthor}"
-				class="link">@{newsAuthor}</a
+				class="link text-base-content/75">@{newsAuthor}</a
 			>
 		</h2>
 	</div>
@@ -48,7 +48,12 @@
 		</ul>
 	</div>
 	<label class="swap swap-rotate md:m-4 btn-ghost p-2 rounded-lg">
-		<input type="checkbox" class="theme-controller" value={invertedPreferral} aria-label="theme toggle" />
+		<input
+			type="checkbox"
+			class="theme-controller"
+			value={invertedPreferral}
+			aria-label="theme toggle"
+		/>
 		<SunIcon />
 		<MoonIcon />
 	</label>
