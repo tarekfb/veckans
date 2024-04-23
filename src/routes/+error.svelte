@@ -3,6 +3,10 @@
 	import { findLastMonday } from '../utils';
 
 	const lastMonday = findLastMonday();
+	// $page.status = $page.status ? $page.status : 500;
+	// if (!$page.error || !$page.error.message)
+	// 	// @ts-ignore
+	// 	$page.error.message = 'Internal server error';
 </script>
 
 <main class="py-4 px-6 text-center">
