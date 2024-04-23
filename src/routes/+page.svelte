@@ -1,11 +1,10 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import Post from '../components/Post.svelte';
 	import { PostType } from '../utils';
 	import ReadFull from '../components/ReadFull.svelte';
 	import { maxCommentsForFocused } from '../utils';
 
-	export let data: PageData;
+	export let data;
 </script>
 
 <main class="p-4 bg-base-200">

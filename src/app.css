@@ -20,6 +20,14 @@ html {
 	);
 }
 
+.navbar-item {
+	@apply font-semibold hover:bg-secondary-content active:bg-secondary-content focus:bg-secondary-content rounded-xl md:text-2xl
+}
+
+.navbar-item-padding {
+	@apply mr-1 p-1.5 md:mr-6 md:p-4
+}
+
 .base-gradient-colors {
 	@apply from-base-200 to-base-100;
 }
