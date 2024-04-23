@@ -31,7 +31,7 @@
 		class="flex-1 flex flex-col items-start md:flex-row md:items-center overflow-hidden my-2"
 	>
 		<a
-			class="navbar-item ml-0 mr-0 pl-0 h-full text-2xl font-mono font-semibold md:px-2 md:text-6xl link-primary"
+			class="navbar-item ml-0 mr-0 p-1.5 h-full text-2xl font-mono font-semibold md:px-2 md:text-6xl link-primary"
 			href="/"
 		>
 			<h1>Veckans</h1>
