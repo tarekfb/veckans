@@ -60,6 +60,7 @@
 					>
 						Alla inlägg
 					</div>
+					<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
 					<ul
 						tabindex="0"
 						class="menu flex-nowrap dropdown-content z-[1] p-2 bg-base-100 rounded-box w-52 mt-4 border-solid border-2 border-primary max-h-96 overflow-y-scroll overflow-x-hidden"

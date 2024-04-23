@@ -9,9 +9,8 @@
 
 	export let comments: PostComment[] = [];
 	export let post: RawPost;
-	const { selftext_html, url, created } = post.data;
-
 	export let postType: PostType = PostType.Default; // -1 is from dynamic route. 0 is first post on landing page. > 0 is all other posts on landig page.
+
 	const truncate = (text: string, limit: number) => {
 		if (text.split(' ').length > limit) {
 			const truncatedText = text.split(' ').slice(0, limit).join(' ');
@@ -20,8 +19,9 @@
 		return text;
 	};
 
-	let html = processHtml(selftext_html);
-	if (postType === PostType.OutOfFocus) html = truncate(html, 50);
+	$: ({ selftext_html, url, created } = post.data);
+	$: html = processHtml(selftext_html);
+	$: if (postType === PostType.OutOfFocus) html = truncate(html, 50);
 
 	$: isShowingComments = true;
 </script>
@@ -47,9 +47,9 @@
 			aria-label="reddit post link"
 			placeholder="Läs på reddit.com"><MdiReddit /></a
 		>
-			<h2 class="font-mono whitespace-nowrap text-base-content/75">
-				{formatDateReadable(created)}
-			</h2>
+		<h2 class="font-mono whitespace-nowrap text-base-content/75">
+			{formatDateReadable(created)}
+		</h2>
 	</div>
 </section>
 
@@ -62,7 +62,11 @@
 {#if postType === PostType.Default || postType === PostType.InFocus}
 	<div class="divider mb-2 mt-6">
 		<label class="swap swap-rotate">
-			<input type="checkbox" bind:checked={isShowingComments} aria-label="toggle comments" />
+			<input
+				type="checkbox"
+				bind:checked={isShowingComments}
+				aria-label="toggle comments"
+			/>
 			<MdiCommentOffOutline class="swap-on text-primary w-10 h-10 " />
 			<MdiCommentOutline class="swap-off text-primary w-10 h-10" />
 		</label>
