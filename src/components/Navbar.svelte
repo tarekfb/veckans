@@ -3,6 +3,9 @@
 	import SunIcon from '../components/SunIcon.svelte';
 	import { onMount } from 'svelte';
 	import MdiOpenInNew from 'virtual:icons/mdi/OpenInNew';
+	import MdiWhiteBalanceSunny from 'virtual:icons/mdi/WhiteBalanceSunny';
+	import MdiMoonWaningCrescent from 'virtual:icons/mdi/MoonWaningCrescent';
+
 	import {
 		findLastMonday,
 		formatDate,
@@ -23,12 +26,12 @@
 	export let posts: RawPost[] = [];
 </script>
 
-<div class="navbar sticky top-0 left-0 px-4 bg-base-200 z-10">
+<navbar class="navbar sticky top-0 left-0 pl-3 pr-0 md:px-4 bg-base-200 z-10">
 	<div
 		class="flex-1 flex flex-col items-start md:flex-row md:items-center overflow-hidden my-2"
 	>
 		<a
-			class="navbar-item py-1 px-1.5 h-full text-2xl font-mono md:px-2 md:text-6xl link-primary"
+			class="navbar-item ml-0 mr-0 pl-0 h-full text-2xl font-mono font-semibold md:px-2 md:text-6xl link-primary"
 			href="/"
 		>
 			<h1>Veckans</h1>
@@ -43,12 +46,20 @@
 	</div>
 	<div class="flex justify-end flex-2 px-2">
 		<div class="flex flex-row items-center justify-center">
-			<a href="/about" class="navbar-item">Om sidan</a>
+			<a href="/about" class="navbar-item navbar-item-padding">Om sidan</a>
 			{#if posts.length === 0}
-				<a href="/{lastMonday}" class="navbar-item">Senaste</a>
+				<a href="/{lastMonday}" class="navbar-item navbar-item-padding"
+					>Senaste</a
+				>
 			{:else}
 				<div class="dropdown dropdown-end">
-					<div tabindex="0" role="button" class="navbar-item">Alla inlägg</div>
+					<div
+						tabindex="0"
+						role="button"
+						class="navbar-item navbar-item-padding"
+					>
+						Alla inlägg
+					</div>
 					<ul
 						tabindex="0"
 						class="menu flex-nowrap dropdown-content z-[1] p-2 bg-base-100 rounded-box w-52 mt-4 border-solid border-2 border-primary max-h-96 overflow-y-scroll overflow-x-hidden"
@@ -58,7 +69,7 @@
 								<li>
 									<a
 										href={`/${formatDate(post.data.created_utc)}`}
-										class="text-lg navbar-item font-semibold flex justify-between w-full"
+										class="text-lg navbar-item navbar-item-padding font-semibold flex justify-between w-full"
 									>
 										<span>Senaste</span>
 										<MdiOpenInNew class="text-2xl text-primary" />
@@ -66,10 +77,10 @@
 								</li>
 							{:else}
 								<li>
-									<div class="divider my-1 px-0"></div>
+									<div class="divider my-1 px-0 pointer-events-none" aria-disabled="true" ></div>
 									<a
 										href={`/${formatDate(post.data.created_utc)}`}
-										class="text-lg navbar-item font-normal flex justify-between w-full"
+										class="text-lg navbar-item navbar-item-padding font-normal flex justify-between w-full"
 									>
 										<span>{formatDateReadable(post.data.created_utc)}</span>
 										<MdiOpenInNew class="text-2xl text-primary" />
@@ -80,7 +91,7 @@
 					</ul>
 				</div>
 			{/if}
-			<label class="swap swap-rotate navbar-item">
+			<label class="swap swap-rotate navbar-item m-0 h-10 w-10">
 				<input
 					type="checkbox"
 					class="theme-controller"
@@ -92,4 +103,4 @@
 			</label>
 		</div>
 	</div>
-</div>
+</navbar>
