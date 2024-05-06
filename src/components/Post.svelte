@@ -56,13 +56,15 @@
 		</h2>
 	</div>
 </section>
-<div class="hidden lg:flex divider mb-2"></div>
+<div
+	class="hidden {postType === PostType.Default && 'lg:flex'} divider mb-2"
+></div>
 <main
-	class={`post-container ${postType === PostType.OutOfFocus && 'text-gradient'} lg:flex lg:px-2 lg:float-left lg:max-w-screen-xl`}
+	class={`post-container ${postType === PostType.OutOfFocus && 'text-gradient'} ${postType === PostType.Default && 'lg:flex lg:px-2 lg:float-left lg:max-w-screen-xl'}`}
 >
 	<div>
 		{@html html}
-		<div class="hidden lg:flex divider">
+		<div class="hidden {postType === PostType.Default && 'lg:flex'} divider">
 			<label class="swap swap-rotate">
 				<input
 					type="checkbox"
@@ -74,11 +76,14 @@
 			</label>
 		</div>
 	</div>
-	<div class="hidden lg:flex divider divider-horizontal mb-10"></div>
+	<div
+		class="hidden {postType === PostType.Default &&
+			'lg:flex divider divider-horizontal mb-10'}"
+	></div>
 </main>
 
 {#if postType === PostType.Default || postType === PostType.InFocus}
-	<div class="lg:hidden divider my-2">
+	<div class="{postType === PostType.Default && 'lg:hidden'} divider my-2">
 		<label class="swap swap-rotate">
 			<input
 				type="checkbox"
@@ -91,7 +96,7 @@
 	</div>
 
 	{#if isShowingComments}
-		<section class="lg:-mt-4">
+		<section class="{postType === PostType.Default ? 'lg:-mt-4' : ""}">
 			<Comments {comments} {postType} />
 		</section>
 	{/if}
