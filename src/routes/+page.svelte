@@ -5,22 +5,41 @@
 	import { maxCommentsForFocused } from '../utils';
 
 	export let data;
+	const firstPost = data.posts[0];
 </script>
 
 <main class="p-4 bg-base-200">
-	<ol>
-		{#each data.posts as post, index (index)}
-			<li class="flex flex-col p-3 bg-base-100 mb-4 rounded-lg shadow-lg">
-				<Post
-					{post}
-					postType={index === 0 ? PostType.InFocus : PostType.OutOfFocus}
-					comments={data.commentsOnFocusedPost.comments}
-				/>
+	<div class="grid gap-4 max-w-screen-xl mx-auto">
+		<div
+			class="md:h-auto md:max-w-full flex flex-col p-3 bg-base-100 mb-4 rounded-lg shadow-lg"
+		>
+			<Post
+				post={firstPost}
+				postType={PostType.InFocus}
+				comments={data.commentsOnFocusedPost.comments}
+			/>
 
-				{#if index > 0 || (post.data.num_comments > maxCommentsForFocused && index === PostType.InFocus)}
-					<ReadFull created={post.data.created} />
+			<ReadFull created={firstPost.data.created} />
+		</div>
+
+		<div class="md:grid md:grid-cols-3 md:gap-4">
+			{#each data.posts as post, index (index)}
+				{#if index > 0}
+					<div
+						class="md:h-auto md:max-w-full flex flex-col justify-between p-3 bg-base-100 mb-4 rounded-lg shadow-lg"
+					>
+						<Post
+							{post}
+							postType={index === 0 ? PostType.InFocus : PostType.OutOfFocus}
+							comments={data.commentsOnFocusedPost.comments}
+						/>
+
+						{#if index > PostType.InFocus || (post.data.num_comments > maxCommentsForFocused && index === PostType.InFocus)}
+							<ReadFull created={post.data.created} />
+						{/if}
+					</div>
 				{/if}
-			</li>
-		{/each}
-	</ol>
+			{/each}
+		</div>
+	</div>
 </main>

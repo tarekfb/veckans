@@ -3,9 +3,6 @@
 	import SunIcon from '../components/SunIcon.svelte';
 	import { onMount } from 'svelte';
 	import MdiOpenInNew from 'virtual:icons/mdi/OpenInNew';
-	import MdiWhiteBalanceSunny from 'virtual:icons/mdi/WhiteBalanceSunny';
-	import MdiMoonWaningCrescent from 'virtual:icons/mdi/MoonWaningCrescent';
-
 	import {
 		findLastMonday,
 		formatDate,
