@@ -9,7 +9,11 @@
 
 	export let comments: PostComment[] = [];
 	export let post: RawPost;
-	export let postType: PostType = PostType.Default; // -1 is from dynamic route. 0 is first post on landing page. > 0 is all other posts on landig page.
+	export let postType: PostType = PostType.Default;
+	// -1 is from dynamic route
+	// 0 is first post on landing page
+	// > 0 is all other posts on landig page
+	// default is post from [slug]
 
 	const truncate = (text: string, limit: number) => {
 		if (text.split(' ').length > limit) {
@@ -52,15 +56,29 @@
 		</h2>
 	</div>
 </section>
-
+<div class="hidden lg:flex divider mb-2"></div>
 <main
-	class={`post-container ${postType === PostType.OutOfFocus && 'text-gradient'}`}
+	class={`post-container ${postType === PostType.OutOfFocus && 'text-gradient'} lg:flex lg:px-2 lg:float-left lg:max-w-screen-xl`}
 >
-	{@html html}
+	<div>
+		{@html html}
+		<div class="hidden lg:flex divider">
+			<label class="swap swap-rotate">
+				<input
+					type="checkbox"
+					bind:checked={isShowingComments}
+					aria-label="toggle comments"
+				/>
+				<MdiCommentOffOutline class="swap-on text-primary w-10 h-10 " />
+				<MdiCommentOutline class="swap-off text-primary w-10 h-10" />
+			</label>
+		</div>
+	</div>
+	<div class="hidden lg:flex divider divider-horizontal mb-10"></div>
 </main>
 
 {#if postType === PostType.Default || postType === PostType.InFocus}
-	<div class="divider mb-2 mt-6">
+	<div class="lg:hidden divider my-2">
 		<label class="swap swap-rotate">
 			<input
 				type="checkbox"
@@ -73,7 +91,7 @@
 	</div>
 
 	{#if isShowingComments}
-		<section>
+		<section class="lg:-mt-4">
 			<Comments {comments} {postType} />
 		</section>
 	{/if}
