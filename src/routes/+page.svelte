@@ -8,8 +8,8 @@
 	const firstPost = data.posts[0];
 </script>
 
-<main class="p-4 bg-base-200">
-	<div class="grid gap-4 max-w-screen-xl mx-auto">
+<main class="bg-base-200">
+	<div class="p-4 md:max-w-screen-xl md:mx-auto">
 		<div
 			class="md:h-auto md:max-w-full flex flex-col p-3 bg-base-100 mb-4 rounded-lg shadow-lg"
 		>
