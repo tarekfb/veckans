@@ -2,7 +2,8 @@
 	import '../app.css';
 	import Navbar from '../components/Navbar.svelte';
 	import { injectSpeedInsights } from '@vercel/speed-insights/sveltekit';
-
+	import { inject } from '@vercel/analytics'
+	inject();
 	injectSpeedInsights();
 	export let data;
 </script>

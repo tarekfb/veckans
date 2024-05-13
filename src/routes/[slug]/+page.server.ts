@@ -22,9 +22,6 @@ export const load = async ({ params, parent }) => {
 
 	const { posts, commentSections } = await parent();
 	const post = findPost(posts, params.slug);
-    
-	if (post) console.log(formatDateReadable(post.data.created_utc));
-    console.log("params is",params.slug);
 
 	if (!post) {
 		console.error("Post not found or doesnt exist yet");
